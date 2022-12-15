@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="safety_control_list">
+			<field name="name">safety_control list</field>
+			<field name="model">safety_control.safety_control</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="time" />
+					<field name="image" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="safety_control_form">
+			<field name="name">safety_control form</field>
+			<field name="model">safety_control.safety_control</field>
+			<field name="arch" type="xml">
+				<form string="Safety Control">
+					<sheet>
+						<div class="d-fle" style="height:500px; text-align: left;">
+							<field name="image" widget="image" options="{'size': [700, 500]}" class="oe_avatar"/>
+							<div>
+								<field name="time"/>
+								<group>
+									<field name="device"/>
+								</group>
+								<group string="Monitored PPE">
+									<field name="personWithoutHelmet"/>
+									<field name="personWithoutHeadphones"/>
+									<field name="personWithoutJacket"/>
+									<field name="personWithoutGloves"/>
+									<field name="personWithoutMask"/>
+								</group>
+							</div>
+						</div>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="safety_control.action_window">
+			<field name="name">Alert</field>
+			<field name="res_model">safety_control.safety_control</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</odoo>

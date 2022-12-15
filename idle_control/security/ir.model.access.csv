@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_idle_control_staff_control,idle_control.idle_control,model_idle_control_idle_control,base.group_user,1,0,0,0
+access_idle_control_manager,manager,model_idle_control_idle_control,idle_control_group_manager,1,1,1,1
