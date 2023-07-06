@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<odoo>
-    <menuitem name="Safety Control" id="safety_control.menu_root" action="safety_control.action_window"/>
-</odoo>

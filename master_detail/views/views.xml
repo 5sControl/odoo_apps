@@ -1,47 +1,74 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-	<data>
-		<record model="ir.ui.view" id="safety_control_list">
-			<field name="name">safety_control list</field>
-			<field name="model">safety_control.safety_control</field>
-			<field name="arch" type="xml">
-				<tree>
-					<field name="time" />
-					<field name="image" />
-				</tree>
-			</field>
-		</record>
-		<record model="ir.ui.view" id="safety_control_form">
-			<field name="name">safety_control form</field>
-			<field name="model">safety_control.safety_control</field>
-			<field name="arch" type="xml">
-				<form string="Safety Control">
-					<sheet>
-						<div class="d-fle" style="height:500px; text-align: left;">
-							<field name="image" widget="image" options="{'size': [700, 500]}" class="oe_avatar"/>
-							<div>
-								<field name="time"/>
-								<group>
-									<field name="device"/>
-								</group>
-								<group string="Monitored PPE">
-									<field name="personWithoutHelmet"/>
-									<field name="personWithoutHeadphones"/>
-									<field name="personWithoutJacket"/>
-									<field name="personWithoutGloves"/>
-									<field name="personWithoutMask"/>
-								</group>
-							</div>
-						</div>
-					</sheet>
-				</form>
-			</field>
-		</record>
-		<!-- actions opening views on models -->
-		<record model="ir.actions.act_window" id="safety_control.action_window">
-			<field name="name">Alert</field>
-			<field name="res_model">safety_control.safety_control</field>
-			<field name="view_mode">tree,form</field>
-		</record>
-	</data>
+  <data>
+    <!-- Определение представления списка контрактов -->
+    <record model="ir.ui.view" id="master_details_contract_list_view">
+      <field name="name">MasterDetails Contract List View</field>
+      <field name="model">contract.contract</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Определение представления формы контракта -->
+    <record model="ir.ui.view" id="master_details_contract_form_view">
+      <field name="name">MasterDetails Contract Form View</field>
+      <field name="model">contract.contract</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="description"/>
+            </group>
+          </sheet>
+          <notebook>
+            <!-- Вкладка для отображения списка актов -->
+            <page string="Acts">
+              <field name="acts_ids" widget="many2many_list"/> <!-- Отображение списка актов -->
+            </page>
+          </notebook>
+        </form>
+      </field>
+    </record>
+
+    <!-- Определение представления формы акта -->
+    <record model="ir.ui.view" id="master_details_act_form_view">
+      <field name="name">MasterDetails Act Form View</field>
+      <field name="model">contract.act</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="description"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Определение действия открытия списка контрактов -->
+    <record model="ir.actions.act_window" id="master_details_contract_action">
+      <field name="name">MasterDetails Contract</field>
+      <field name="res_model">contract.contract</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Определение действия открытия списка актов -->
+    <record model="ir.actions.act_window" id="master_details_act_action">
+      <field name="name">MasterDetails Act</field>
+      <field name="res_model">contract.act</field>
+      <field name="view_mode">tree</field>
+      <field name="context">{"search_default_contract_id": active_id}</field> <!-- Фильтр по контракту -->
+    </record>
+
+    <!-- Добавление представлений в меню -->
+    <menuitem name="MasterDetails" id="menu_master_details" sequence="1"/>
+    <menuitem name="MasterDetails Contracts" id="menu_master_details_contracts" parent="menu_master_details"
+              action="master_details_contract_action"/>
+
+  </data>
 </odoo>

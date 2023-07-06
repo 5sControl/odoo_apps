@@ -1,33 +1,19 @@
 from odoo import models, fields, api
 
 
-class SafetyControl(models.Model):
-    _name = 'safety_control.safety_control'
-    _description = 'Safety Control'
-    _rec_name = 'device'
+class Contract(models.Model):
+    _name = 'contract.contract'
+    _description = 'Contracts'
 
-    device = fields.Char(string="Device")
+    name = fields.Char(string='Contract Number')
+    description = fields.Text(string='Description')
+    acts_ids = fields.One2many('contract.act', 'contract_id', string='Acts')
 
-    time = fields.Char(string="Time of Report")
-    lastTime = fields.Char(string="Time of Report: ")
-    image = fields.Binary(
-        string="Image",
-        store=True,
-        attachment=False
-    )
 
-    recognitionType = fields.Text()
+class Act(models.Model):
+    _name = 'contract.act'
+    _description = 'Acts'
 
-    personWithoutHelmet = fields.Boolean(string="Person Without Helmet", default=False)
-    personWithoutHeadphones = fields.Boolean(string="Person Without Headphones", default=False)
-    personWithoutJacket = fields.Boolean(string="Person Without Jacket", default=False)
-    personWithoutGloves = fields.Boolean(string="Person Without Gloves", default=False)
-    personWithoutMask = fields.Boolean(string="Person Without Mask", default=False)
-
-    @api.model
-    def create(self, vals):
-
-        vals['image'] = vals['image'].split(',')[-1]
-        vals['device'] = vals['device']['name']
-
-        return super(SafetyControl, self).create(vals)
+    name = fields.Char(string='Act Number')
+    description = fields.Text(string='Description')
+    contract_id = fields.Many2one('contract.contract', string='Contract')

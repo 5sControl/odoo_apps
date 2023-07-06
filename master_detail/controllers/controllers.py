@@ -1,56 +1,21 @@
-from odoo import http
-from odoo.http import request
+# -*- coding: utf-8 -*-
+# from odoo import http
 
 
-class SafetyControl(http.Controller):
-    @http.route('/safety_control/get_all_alerts', auth='user', crf=True, type='json', methods=['POST'])
-    def all_alerts(self, **kw):
-        alert_rec = http.request.env['safety_control.safety_control'].sudo().search([])
-        alerts = []
-        for rec in alert_rec:
-            alerts.append({
-                'device': rec.device,
+# class MasterDetails(http.Controller):
+#     @http.route('/master_details/master_details', auth='public')
+#     def index(self, **kw):
+#         return "Hello, world"
 
-                'time': rec.time,
-                'lastTime': rec.lastTime,
-                'image': rec.image,
+#     @http.route('/master_details/master_details/objects', auth='public')
+#     def list(self, **kw):
+#         return http.request.render('master_details.listing', {
+#             'root': '/master_details/master_details',
+#             'objects': http.request.env['master_details.master_details'].search([]),
+#         })
 
-                'recognitionType': rec.recognitionType,
-
-                'personWithoutHelmet': rec.personWithoutHelmet,
-                'personWithoutHeadphones': rec.personWithoutHeadphones,
-                'personWithoutJacket': rec.personWithoutJacket,
-                'personWithoutGloves': rec.personWithoutGloves,
-                'personWithoutMask': rec.personWithoutMask,
-            })
-
-        return alerts
-
-    @http.route('/safety/create_alert', auth='user', website=False, crf=True, type='json', methods=['POST'])
-    def create(self, **rec):
-        if http.request.render:
-            try:
-                vals = {
-                    'device': rec['device'],
-
-                    'time': rec['time'],
-                    'lastTime': rec['lastTime'],
-                    'image': rec['image'],
-
-                    'recognitionType': rec['recognitionType'],
-
-                    'personWithoutHelmet': rec['personWithoutHelmet'],
-                    'personWithoutHeadphones': rec['personWithoutHeadphones'],
-                    'personWithoutJacket': rec['personWithoutJacket'],
-                    'personWithoutGloves': rec['personWithoutGloves'],
-                    'personWithoutMask': rec['personWithoutMask'],
-                }
-            except KeyError:
-                return {'success': False, 'message':'Key not found'}
-        return {'success': True,
-                'message': 'Success',
-                'ID': request.env['safety_control.safety_control'].sudo().create(vals).id}
-
-    @http.route('/safety/ping', type='json', auth='public', crf=False, methods=['POST'])
-    def ping(self):
-        return {'success': True}
+#     @http.route('/master_details/master_details/objects/<model("master_details.master_details"):obj>', auth='public')
+#     def object(self, obj, **kw):
+#         return http.request.render('master_details.object', {
+#             'object': obj
+#         })
