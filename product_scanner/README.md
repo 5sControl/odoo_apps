@@ -1,4 +1,4 @@
-product scanner
+# ProductScanner
 
 Send a post request to http://127.0.0.1:8069/scanner/scan
 
