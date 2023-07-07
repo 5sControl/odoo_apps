@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend" name="product_scanner assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+<!--                <script type="text/javascript" src="/product_scanner/static/src/js/scanner.js"></script>-->
+            </xpath>
+        </template>
+
+        <menuitem name="Product Scanner" id="menu_product_scanner" parent="base.menu_sales"
+                  action="product_scanner.action_window" sequence="10"/>
+    </data>
+</odoo>
