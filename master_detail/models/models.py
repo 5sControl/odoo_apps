@@ -17,3 +17,4 @@ class Act(models.Model):
     name = fields.Char(string='Act Number')
     description = fields.Text(string='Description')
     contract_id = fields.Many2one('contract.contract', string='Contract')
+    photos = fields.Many2many('ir.attachment', string='Photos')

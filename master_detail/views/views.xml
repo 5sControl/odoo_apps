@@ -45,6 +45,11 @@
               <field name="name"/>
               <field name="description"/>
             </group>
+            <notebook>
+              <page string="Photos">
+                <field name="photos" widget="many2many_binary" options="{'no_create': True, 'no_open': True}"/>
+              </page>
+            </notebook>
           </sheet>
         </form>
       </field>
