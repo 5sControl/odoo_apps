@@ -18,43 +18,30 @@ class Contract(models.Model):
         return super(Contract, self).write(values)
 
 
-class Work(models.Model):
-    _name = 'contract.work'
-    _description = 'Works'
-
-    name = fields.Char(string='Work Name')
-    description = fields.Text(string='Work Description')
-    address = fields.Char(string='Address')
-    quantity = fields.Float(string='Quantity')
-    unit = fields.Char(string='Unit of measurement')
-    unit_price = fields.Float(string='Unit Price')
-
-
-class SubWork(models.Model):
-    _name = 'contract.subwork'
-    _description = 'Sub Works'
-
-    name = fields.Char(string='Sub Work Name')
-    description = fields.Text(string='Sub Work Description')
-    work_id = fields.Many2one('contract.work', string='Work')
-
-
 class Act(models.Model):
     _name = 'contract.act'
     _description = 'Acts'
+
+    PERMISSION_SELECTION = [
+        ('permission', 'Have permission'),
+        ('no_permission', 'No permission'),
+        ('no_record', 'Missing entry')
+    ]
 
     name = fields.Char(string='Act Number')
     description = fields.Text(string='Description')
     contract_id = fields.Many2one('contract.contract', string='Contract')
     photos = fields.Many2many('ir.attachment', string='Photos')
-    work_ids = fields.Many2many('contract.work', string='Works')
-    subwork_ids = fields.Many2many('contract.subwork', string='Sub Works')
-    employee_ids = fields.Many2many('hr.employee', string='Employees')
-
-    def action_add_work(self):
-        work = self.env['contract.work'].create({'name': 'New Work'})
-        self.work_ids = [(4, work.id)]
-
-    def action_add_subwork(self):
-        subwork = self.env['contract.subwork'].create({'name': 'New Sub Work'})
-        self.subwork_ids = [(4, subwork.id)]
+    address = fields.Char(string='Address')
+    quantity = fields.Float(string='Quantity')
+    unit = fields.Char(string='Unit of measurement')
+    unit_price = fields.Float(string='Unit Price')
+    start_date = fields.Date(string='Start Date')
+    end_date = fields.Date(string='End Date')
+    coverage_type = fields.Char(string='Coverage Type')
+    preliminary_dismantling = fields.Integer(string='Ardomas preliminarus dangų plotas')
+    master_ids = fields.Many2many('hr.employee', string='Employees')
+    phone_number = fields.Text(string='Phone Number')
+    precipitation_date = fields.Date(string='Precipitation Date')
+    description_precipitation = fields.Text(string='Description of precipitation')
+    permission_excavate = fields.Selection(selection=PERMISSION_SELECTION, string='Permission to excavate')
