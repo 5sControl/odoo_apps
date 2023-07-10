@@ -69,6 +69,16 @@
                                 <field name="photos" widget="many2many_binary"
                                        options="{'no_create': True, 'no_open': True}"/>
                             </page>
+                            <page string="Employees">
+                                <field name="employee_ids" widget="one2many">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="job_title"/>
+                                        <field name="image_128" widget="image"
+                                               options="{'no_create': True, 'no_edit': True}"/>
+                                    </tree>
+                                </field>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
