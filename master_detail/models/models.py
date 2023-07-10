@@ -37,7 +37,7 @@ class Act(models.Model):
     name = fields.Char(string='Act Number')
     description = fields.Text(string='Description')
     contract_id = fields.Many2one('contract.contract', string='Contract')
-    photos = fields.Many2many('ir.attachment', string='Photos')
+    photos = fields.Many2many('ir.attachment', string='Photos', widget="image")
     work_ids = fields.Many2many('contract.work', string='Works')
     subwork_ids = fields.Many2many('contract.subwork', string='Sub Works')
 
