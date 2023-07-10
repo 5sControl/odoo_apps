@@ -23,7 +23,6 @@
                         <group>
                             <field name="name"/>
                             <field name="description"/>
-                            <field name="address"/>
                             <field name="client"/>
                             <field name="subcontractor"/>
                             <field name="create_date"/>
@@ -60,6 +59,7 @@
                                     <tree editable="bottom">
                                         <field name="name"/>
                                         <field name="description"/>
+                                        <field name="address"/>
                                         <field name="quantity"/>
                                         <field name="unit"/>
                                     </tree>
