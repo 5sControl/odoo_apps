@@ -7,7 +7,16 @@ class Contract(models.Model):
 
     name = fields.Char(string='Contract Number')
     description = fields.Text(string='Description')
+    create_date = fields.Datetime(string='Create Date', readonly=True, default=lambda self: fields.Datetime.now())
+    write_date = fields.Datetime(string='Write Date', readonly=True)
+    address = fields.Char(string='Address')
+    client = fields.Many2one('res.partner', string='Client', domain="[('is_company', '=', True)]")
+    subcontractor = fields.Many2one('res.partner', string='Subcontractor', domain="[('is_company', '=', True)]")
     acts_ids = fields.One2many('contract.act', 'contract_id', string='Acts')
+
+    def write(self, values):
+        values['write_date'] = fields.Datetime.now()
+        return super(Contract, self).write(values)
 
 
 class Work(models.Model):
