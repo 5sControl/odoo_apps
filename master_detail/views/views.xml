@@ -87,17 +87,11 @@
                                     </div>
                                 </group>
                                 <group>
-                                    <label for="repair_works" string="Repair Works"/>
-                                    <div>
-                                        <field name="repair_works"/>
-                                    </div>
+                                    <field name="repair_works"/>
+                                    <field name="diameter"
+                                           attrs="{'invisible': [('repair_works', '=', False)]}" widget="selection"/>
                                 </group>
-                                <group>
-                                    <label for="diameter" string="Diameter ⌀"/>
-                                    <div>
-                                        <field name="diameter"/>
-                                    </div>
-                                </group>
+
                                 <group>
                                     <label for="quantity" string="Quantity"/>
                                     <div>
