@@ -50,20 +50,73 @@
                 <form>
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="description"/>
-                            <field name="address"/>
-                            <field name="master_id"/>
-                            <field name="quantity"/>
-                            <field name="unit"/>
-                            <field name="start_date"/>
-                            <field name="end_date"/>
-                            <field name="coverage_type"/>
-                            <field name="preliminary_dismantling"/>
-                            <field name="phone_number"/>
-                            <field name="precipitation_date"/>
-                            <field name="description_precipitation"/>
-                            <field name="permission_excavate"/>
+                            <group string="Info">
+                                <field name="contract_id"/>
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="address"/>
+                                <field name="master_id"/>
+                                <field name="phone_number"/>
+                                <field name="preliminary_dismantling"/>
+                                <field name="permission_excavate"/>
+                                <field name="date_receipt_work"/>
+                            </group>
+                            <group string="Work">
+                                <group>
+                                    <label for="start_date" string="Start Date"/>
+                                    <div>
+                                        <field name="start_date"/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="end_date" string="End Date"/>
+                                    <div>
+                                        <field name="end_date"/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="preliminary_dismantling" string="Preliminary Dismantling"/>
+                                    <div>
+                                        <field name="preliminary_dismantling"/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="coverage_type" string="Coverage Type"/>
+                                    <div>
+                                        <field name="coverage_type"/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="repair_works" string="Repair Works"/>
+                                    <div>
+                                        <field name="repair_works"/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="diameter" string="Diameter ⌀"/>
+                                    <div>
+                                        <field name="diameter"/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="quantity" string="Quantity"/>
+                                    <div>
+                                        <field name="quantity"/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="unit" string="Unit"/>
+                                    <div>
+                                        <field name="unit"/>
+                                    </div>
+                                </group>
+                            </group>
+                            <group string="Weather">
+                                <field name="description_precipitation"/>
+                                <field name="precipitation_date"/>
+                            </group>
+
+
                         </group>
                         <notebook>
                             <page string="Photos">

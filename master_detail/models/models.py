@@ -28,6 +28,33 @@ class Act(models.Model):
         ('no_record', 'Missing entry')
     ]
 
+    REPAIR_WORKS_SELECTION = [
+        ('1', 'Trūkimo vietos užtaisymas, kai gylis iki 2,0 m., plieninio vamzdžio skersmuo'),
+        ('2', 'Trūkimo vietos užtaisymas, kai gylis iki 2,5 m., plieninio vamzdžio skersmuo'),
+        ('3', 'Trūkimo vietos užtaisymas, kai gylis iki 3,0 m., plieninio vamzdžio skersmuo'),
+        ('4', 'Trūkimo vietos užtaisymas, kai gylis iki 4,0 m., plieninio vamzdžio skersmuo'),
+        ('5', 'Trūkimo vietos užtaisymas, kai gylis iki 5,0 m., plieninio vamzdžio skersmuo'),
+        ('6', 'Trūkimo vietos užtaisymas, kai gylis iki 6,0 m., plieninio vamzdžio skersmuo'),
+        ('7', 'Vamzdžio movos sandarinimas, kai gylis iki 2,0 m., ketinio vamdžio skersmuo, mm'),
+        ('8', 'Vamzdžio movos sandarinimas, kai gylis iki 2,5 m., ketinio vamdžio skersmuo, mm')
+    ]
+
+    diameter_selection = [
+        ('Ø80', 'Ø80'),
+        ('Ø100', 'Ø100'),
+        ('Ø125', 'Ø125'),
+        ('Ø150', 'Ø150'),
+        ('Ø200', 'Ø200'),
+        ('Ø250', 'Ø250'),
+        ('Ø300', 'Ø300'),
+        ('Ø350', 'Ø350'),
+        ('Ø400', 'Ø400'),
+        ('Ø500', 'Ø500'),
+        ('Ø600', 'Ø600'),
+        ('Ø700', 'Ø700'),
+        ('Ø800', 'Ø800'),
+    ]
+
     name = fields.Char(string='Act Number')
     description = fields.Text(string='Description')
     contract_id = fields.Many2one('contract.contract', string='Contract')
@@ -39,6 +66,7 @@ class Act(models.Model):
     unit_price = fields.Float(string='Unit Price')
     start_date = fields.Date(string='Start Date')
     end_date = fields.Date(string='End Date')
+    date_receipt_work = fields.Date(string='Date of receipt of work')
     coverage_type = fields.Char(string='Coverage Type')
     preliminary_dismantling = fields.Integer(string='Ardomas preliminarus dangų plotas')
     employers_ids = fields.Many2many('hr.employee', string='Employees', relation='act_employers_rel')
@@ -46,3 +74,6 @@ class Act(models.Model):
     precipitation_date = fields.Date(string='Precipitation Date')
     description_precipitation = fields.Text(string='Description of precipitation')
     permission_excavate = fields.Selection(selection=PERMISSION_SELECTION, string='Permission to excavate')
+    diameter = fields.Selection(selection=diameter_selection, string='Pipe Diameter ⌀')
+    repair_works = fields.Selection(selection=REPAIR_WORKS_SELECTION, string='Repair Works')
+
