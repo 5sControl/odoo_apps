@@ -44,50 +44,6 @@ class Work(models.Model):
     _name = 'contract.work'
     _description = 'Repair Works'
 
-    REPAIR_WORKS_SELECTION = [
-        ('1', 'Trūkimo vietos užtaisymas, kai gylis iki 2,0 m., plieninio vamzdžio skersmuo'),
-        ('2', 'Trūkimo vietos užtaisymas, kai gylis iki 2,5 m., plieninio vamzdžio skersmuo'),
-        ('3', 'Trūkimo vietos užtaisymas, kai gylis iki 3,0 m., plieninio vamzdžio skersmuo'),
-        ('4', 'Trūkimo vietos užtaisymas, kai gylis iki 4,0 m., plieninio vamzdžio skersmuo'),
-        ('5', 'Trūkimo vietos užtaisymas, kai gylis iki 5,0 m., plieninio vamzdžio skersmuo'),
-        ('6', 'Trūkimo vietos užtaisymas, kai gylis iki 6,0 m., plieninio vamzdžio skersmuo'),
-        ('7', 'Vamzdžio movos sandarinimas, kai gylis iki 2,0 m., ketinio vamdžio skersmuo, mm'),
-        ('8', 'Vamzdžio movos sandarinimas, kai gylis iki 2,5 m., ketinio vamdžio skersmuo, mm'),
-        ('9', 'Vamzdžio movos sandarinimas, kai gylis iki 3,0 m., ketinio vamdžio skersmuo, mm'),
-        ('10', 'Vamzdžio movos sandarinimas, kai gylis iki 4,0 m., ketinio vamdžio skersmuo, mm'),
-        ('11', 'Remontinės sudedamos movos uždėjimas, kai gylis iki 2,0 m. ketinio vamzdžio skersmuo, mm'),
-        ('12', 'Remontinės sudedamos movos uždėjimas, kai gylis iki 2,5 m. ketinio vamzdžio skersmuo, mm'),
-        ('13', 'Remontinės sudedamos movos uždėjimas, kai gylis iki 3,0 m. ketinio vamzdžio skersmuo, mm'),
-        ('14', 'Remontinės sudedamos movos uždėjimas, kai gylis iki 4,0 m. ketinio vamzdžio skersmuo, mm'),
-        ('15', 'Vamzdžio pažeistos dalies keitimas, kai gylis iki 2,0 m., ketinio vamdžio skersmuo, mm'),
-        ('16', 'Vamzdžio pažeistos dalies keitimas, kai gylis iki 2,5 m., ketinio vamdžio skersmuo, mm'),
-        ('17', 'Vamzdžio pažeistos dalies keitimas, kai gylis iki 3,0 m., ketinio vamdžio skersmuo, mm'),
-        ('18', 'Vamzdžio pažeistos dalies keitimas, kai gylis iki 4,0 m., ketinio vamdžio skersmuo, mm'),
-        ('19', 'Vamzdžio pažeistos dalies keitimas, kai gylis iki 2,0 m, polietileninio vamdžio skersmuo, mm'),
-        ('20', 'Vamzdžio pažeistos dalies keitimas, kai gylis iki 2,5 m, polietileninio vamdžio skersmuo, mm'),
-    ]
-
-    diameter_selection = [
-        ('32', '32'),
-        ('40', '40'),
-        ('50', '50'),
-        ('63', '63'),
-        ('80', '80'),
-        ('100', '100'),
-        ('110', '110'),
-        ('125', '125'),
-        ('150', '150'),
-        ('200', '200'),
-        ('250', '250'),
-        ('300', '300'),
-        ('350', '350'),
-        ('400', '400'),
-        ('500', '500'),
-        ('600', '600'),
-        ('700', '700'),
-        ('800', '800'),
-    ]
-
     description = fields.Text(string='Description')
     quantity = fields.Float(string='Quantity')
     coverage_type = fields.Char(string='Coverage Type')
@@ -100,5 +56,23 @@ class Work(models.Model):
     act_id = fields.Many2one('contract.act', string='Act')
     precipitation_date = fields.Date(string='Precipitation Date')
     description_precipitation = fields.Text(string='Description of precipitation')
-    diameter = fields.Selection(selection=diameter_selection, string='Pipe Diameter ⌀')
-    repair_works = fields.Selection(selection=REPAIR_WORKS_SELECTION, string='Repair Works')
+    reference_ids = fields.Many2many('contract.reference', string='References')
+    job_id = fields.Many2one('contract.job', string='Job')
+
+
+class Jobs(models.Model):
+    _name = 'contract.job'
+    _description = 'Jobs'
+
+    name = fields.Char(string='Name of job')
+    work_id = fields.Many2one('contract.work', string='Work')
+    group_ids = fields.One2many('contract.group', 'job_id', string='Groups')
+
+
+class GroupJobs(models.Model):
+    _name = 'contract.group'
+    _description = 'GroupJobs'
+
+    description = fields.Text(string='Description')
+    diameter = fields.Char(string='Diameter')
+    job_id = fields.Many2one('contract.job', string='Job')

@@ -78,6 +78,30 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="view_contract_job_form">
+            <field name="name">contract.job.form</field>
+            <field name="model">contract.job</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Groups">
+                                <field name="group_ids">
+                                    <tree>
+                                        <field name="description"/>
+                                        <field name="diameter"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
 
         <!-- Определение действия открытия списка контрактов -->
         <record model="ir.actions.act_window" id="master_details_contract_action">
@@ -94,12 +118,21 @@
             <field name="context">{"search_default_contract_id": False}</field>
         </record>
 
+        <!-- Определение действия открытия списка справочника Job -->
+        <record model="ir.actions.act_window" id="action_contract_job">
+            <field name="name">MasterDetails Jobs</field>
+            <field name="res_model">contract.job</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
         <!-- Добавление представлений в меню -->
         <menuitem name="MasterDetails" id="menu_master_details" sequence="1"/>
         <menuitem name="Contracts" id="menu_master_details_contracts" parent="menu_master_details"
                   action="master_details_contract_action"/>
         <menuitem name="Acts" id="menu_master_details_acts" parent="menu_master_details"
                   action="master_details_act_action"/>
-
+        <menuitem name="Job" id="menu_contract_job" parent="menu_master_details"
+                  action="action_contract_job"/>
     </data>
 </odoo>
