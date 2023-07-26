@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_act_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="act">
+                <div class="page">
+                    <style>
+                        /* Center text horizontally and vertically in table cells */
+                        table.bordered.centered {
+                        border-collapse: collapse;
+                        }
+
+                        /* Add different styles for each table */
+                        table.bordered.centered.custom-width1 th,
+                        table.bordered.centered.custom-width1 td {
+                        /* Custom styles for the first table */
+                        }
+
+                        table.bordered.centered.custom-width2 th,
+                        table.bordered.centered.custom-width2 td {
+                        /* Custom styles for the second table */
+                        }
+
+                        table.bordered.centered th,
+                        table.bordered.centered td {
+                        border: 1px solid black;
+                        padding: 5px;
+                        text-align: center;
+                        vertical-align: middle;
+                        }
+
+                        table.bordered.centered th {
+                        font-weight: bold;
+                        }
+
+                        div.signatures {
+                        text-align: center;
+                        }
+
+                        div.signatory h4 {
+                        margin-bottom: 5px;
+                        }
+
+                        h2.centered {
+                        text-align: center;
+                        }
+
+                        body, table, th, td {
+                        font-family: "Times New Roman", Times, serif;
+                        }
+
+                        div.right-align {
+                        text-align: right;
+                        }
+
+                        .field {
+                        margin-bottom: 20px;
+                        }
+                        table.bordered {
+                        margin-bottom: 20px; /* Adjust the value as needed */
+                        }
+
+                        table.info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 40px;
+                        }
+
+                        table.info-table tr {
+                        padding-right: 30px;
+                        font-family: "Times New Roman", Times, serif;
+                        }
+                        table.info-table tr:last-child {
+                        padding-right: 50px;
+                        }
+                        table.info-table th {
+                        text-align: left;
+                        }
+                        .line {
+                        border-bottom: 1px solid black;
+                        width: 400px;
+                        margin: left 0;
+                        }
+
+                    </style>
+
+                    <h2 class="centered">ATLIKTŲ DARBŲ AKTAS</h2>
+                    <h3>Darbų sutartis: "<t t-esc="act.contract_id.name"/>"
+                    </h3>
+                    <h3>Darbų sutarties Nr.:
+                        <t t-esc="act.name"/>
+                    </h3>
+                    <h3>Užsakovas:
+                        <t t-esc="act.client_name"/>
+                    </h3>
+                    <h3>Rangovas:
+                        <t t-esc="act.subcontractor_name"/>
+                    </h3>
+
+                    <div class="container">
+                        <div class="field">
+                            <table class="bordered centered custom-width1">
+                                <!-- First table content -->
+                                <tr>
+                                    <td>Avarijos tvarkymo adresas:</td>
+                                    <td>
+                                        <t t-esc="act.address"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Užduoties Nr.:</td>
+                                    <td>
+                                        <t t-esc="act.name"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="divider"></div>
+                            <div class="right-align"></div>
+                        </div>
+
+                        <div class="field">
+                            <table>
+                                <!-- Add more rows as needed -->
+                            </table>
+                            <div class="divider"></div>
+                        </div>
+                    </div>
+
+                    <!-- Update the table headers and fields to display "acts" data -->
+                    <table class="bordered centered custom-width">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Eil. Nr.</th>
+                                <th rowspan="2">Darbų pavadinimas</th>
+                                <th rowspan="2">Darbų aprašymas</th>
+                                <th rowspan="2">Mato vienetas</th>
+                                <th rowspan="2">Kiekis</th>
+                                <th colspan="3">1 mato vnt. kaina eur be PVM</th>
+                                <th rowspan="2">Vnt. kaina iš viso, Eur be PVM</th>
+                                <th rowspan="2">Iš viso Eur, be PVM</th>
+                            </tr>
+                            <tr>
+                                <th>Medžiagų</th>
+                                <th>Darbų</th>
+                                <th>Mechanizmų</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="act.work_ids" t-as="work">
+                                <tr>
+                                    <td>
+                                        <t t-esc="work.guide_id.eil_nr"/>
+                                    </td>
+                                    <td style="font-family: Arial, sans-serif;">
+                                        <t t-esc="work.guide_id.diameter"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="work.guide_id.group"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="work.guide_id.unit"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="work.quantity"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="work.guide_id.materials"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="work.guide_id.works"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="work.guide_id.mechanisms"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="work.total_unit_price_without_vat"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="work.only_in_euro_without_vat"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+<table class="info-table">
+                        <tr>
+                            <td>
+                                <div class="underline-text">Užsakovas:</div>
+                                <div t-esc="act.client_name"></div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div class="underline-text">Užsakovas:</div>
+                                <div t-esc="act.client_name"></div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="underline-text">Užsakovas:</div>
+                                <div t-esc="act.client_name"></div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div class="underline-text">Rangovas:</div>
+                                <div t-esc="act.subcontractor_name"></div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

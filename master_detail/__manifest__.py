@@ -26,8 +26,10 @@
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml',
-        # '/static/src/css/lightbox.css'
+        'static/src/js/custom.js',
+        # 'static/src/css/custom_styles.css',
+        'report/reports.xml',
+        'report/report_task.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
