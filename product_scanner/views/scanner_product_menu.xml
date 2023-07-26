@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<odoo>
-    <data>
-        <menuitem id="menu_product_scanner" name="Product Scanner" sequence="10"/>
-    </data>
-</odoo>
