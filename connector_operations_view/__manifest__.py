@@ -15,6 +15,7 @@
         "base",
         "mrp",
     ],
+    'images':['static/description/banner.gif'],
     "application": True,
     "development_status": "Beta",
     "license": "LGPL-3",
