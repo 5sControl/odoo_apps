@@ -3,7 +3,7 @@
    :width: 128px
    :height: 128px
 
-.. image:: /static/description/images.png
+.. image:: /static/description/banner.gif
    :alt: image
    :width: 800px
    :height: 600px
