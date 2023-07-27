@@ -16,11 +16,11 @@
     'category': 'Uncategorized',
     'version': '0.1',
     'depends': ['base'],
-    'assets': {
-            'web.assets_backend': [
-                'tool_control/static/src/css/reset.css',
-            ],
-        },
+    # 'assets': {
+    #         'web.assets_backend': [
+    #             'tool_control/static/src/css/reset.css',
+    #         ],
+    #     },
     'data': [
         # 'static/src/css/reset.css',
         'security/security.xml',
