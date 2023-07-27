@@ -16,13 +16,8 @@
     'category': 'Uncategorized',
     'version': '0.1',
     'depends': ['base'],
-    'assets': {
-            'web.assets_backend': [
-                'tool_control/static/src/css/reset.css',
-            ],
-        },
     'data': [
-        # 'static/src/css/reset.css',
+        'static/src/css/reset.css',
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
