@@ -17,6 +17,7 @@
     'version': '0.1',
     'depends': ['base'],
     'data': [
+        'static/src/css/reset.css',
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
