@@ -34,77 +34,88 @@
 
         <img src="./images/4.jpg" style="max-width: 100%; height: auto;">
 
-    </div>
-</section>
 
-<!--<div>-->
-<!--    <a href="https://docs.google.com/presentation/d/1DrQh9U0DVxDtP2s5zxZlwrAWk2a0EXBm6RsrauyrooE/edit?hl=ru#slide=id.g25074296374_0_60">-->
-<!--        <span style="display: inline-block; background-color: lightblue; padding: 5px; cursor: pointer;">-->
-<!--            Link to the Presentation-->
-<!--        </span>-->
-<!--    </a>-->
-<!--</div>-->
-<head>
-    <style>
-    .slider {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 10px solid #ff5900; /* Add a 10px border around the slider */
-    }
+        <!--<div>-->
+        <!--    <a href="https://docs.google.com/presentation/d/1DrQh9U0DVxDtP2s5zxZlwrAWk2a0EXBm6RsrauyrooE/edit?hl=ru#slide=id.g25074296374_0_60">-->
+        <!--        <span style="display: inline-block; background-color: lightblue; padding: 5px; cursor: pointer;">-->
+        <!--            Link to the Presentation-->
+        <!--        </span>-->
+        <!--    </a>-->
+        <!--</div>-->
+        <head>
+            <style>
+                .slider {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    border: 10px solid #ff5900;
+                    max-width: 100%;
+                    height: auto;
 
-    .slider-image {
-      max-width: 100%;
-      height: auto;
-      cursor: pointer;
-      display: none;
-    }
+                }
 
-    .slider-image.active {
-      display: block;
-    }
+                .slider-image {
+                    max-width: 100%;
+                    height: auto;
+                    cursor: pointer;
+                    display: none;
+                }
 
-    /* Additional styles for centering the heading */
-    .slider-heading {
-      color: orangered;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
+                .slider-image.active {
+                    display: block;
+                }
 
-<section class="slider">
-    <h3 class="slider-heading">Images Presentation</h3>
-    <img class="slider-image active" src="./images/img20.jpg" onclick="showNextSlide()"
-         style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img24.jpg" onclick="showNextSlide()" style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img28.jpg" onclick="showNextSlide()" style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img32.jpg" onclick="showNextSlide()"
-         style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img36.jpg" onclick="showNextSlide()" style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img42.jpg" onclick="showNextSlide()" style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img48.jpg" onclick="showNextSlide()"
-         style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img54.jpg" onclick="showNextSlide()" style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img58.jpg" onclick="showNextSlide()" style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img64.jpg" onclick="showNextSlide()"
-         style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img68.jpg" onclick="showNextSlide()" style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img72.jpg" onclick="showNextSlide()" style="max-width: 100%; height: auto;">
-    <img class="slider-image" src="./images/img76.jpg" onclick="showNextSlide()" style="max-width: 100%; height: auto;">
-</section>
+                /* Additional styles for centering the heading */
+                .slider-heading {
+                    color: orangered;
+                    text-align: center;
+                }
+            </style>
+        </head>
+        <body>
 
-<script>
-  let currentSlide = 0;
-  const totalSlides = 13;
+        <section class="slider">
+            <h3 class="slider-heading">Images Presentation</h3>
+            <img class="slider-image active" src="./images/img20.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img24.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img28.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img32.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img36.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img42.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img48.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img54.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img58.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img64.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img68.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img72.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+            <img class="slider-image" src="./images/img76.jpg" onclick="showNextSlide()"
+                 style="max-width: 100%; height: auto;">
+        </section>
 
-  function showNextSlide() {
-    const slides = document.getElementsByClassName('slider-image');
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % totalSlides;
-    slides[currentSlide].classList.add('active');
-  }
-</script>
+        <script>
+            let currentSlide = 0;
+            const totalSlides = 13;
 
-</body>
+            function showNextSlide() {
+                const slides = document.getElementsByClassName('slider-image');
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % totalSlides;
+                slides[currentSlide].classList.add('active');
+            }
+        </script>
+
+        </body>
+</div>
 </section>
