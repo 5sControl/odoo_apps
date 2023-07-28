@@ -6,7 +6,42 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../src/css/reset.css" media="screen" />
+<!--        <link rel="stylesheet" href="../src/css/reset.css" media="screen" />-->
+    <style>
+        .wrapper {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 20px;
+    height: 100%;
+}
+
+.wrapper_column {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    max-height: 400px;
+    justify-content: center;
+    row-gap: 10px;
+}
+
+.column_img {
+    margin-top: 20px
+}
+
+.wrapper_header {
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.wrapper_footer {
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: right;
+}
+    </style>
 </head>
 <body style="width: 100%">
 <template id="services_page_template">

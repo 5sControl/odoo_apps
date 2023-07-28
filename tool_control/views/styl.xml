@@ -1,0 +1,14 @@
+<odoo>
+    <!--For Backend-->
+    <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="./static/src/css/reset.css"/>
+        </xpath>
+    </template>
+    <!--For Frontkend-->
+    <template id="assets_frontend" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="./static/src/css/reset.css"/>
+        </xpath>
+    </template>
+</odoo>

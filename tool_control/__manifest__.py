@@ -17,21 +17,22 @@
     'version': '0.1',
     'depends': ['base'],
     'data': [
-        'static/src/css/reset.css',
+        # '/Users/anikeenko/PycharmProjects/odoo16/odoo_apps/tool_control/static/src/css/reset.css',
+        # 'views/styl.xml',
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
         'views/tools_control_menu.xml',
     ],
-    'assets': {
-        'web.assets_frontend': [
-            'tool_control/static/src/css/reset.css',
-        ],
-        'web.assets_backend': [
-            'tool_control/static/src/css/reset.css',
-        ],
-    },
+    # 'assets': {
+    #      'web.assets_frontend': [
+    #          'tool_control/static/src/css/reset.css',
+    #      ],
+    #      'web.assets_backend': [
+    #          'tool_control/static/src/css/reset.css',
+    #      ],
+    #  },
     'application': True,
     'license': 'LGPL-3'
 }
