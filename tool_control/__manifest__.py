@@ -24,6 +24,14 @@
         'views/templates.xml',
         'views/tools_control_menu.xml',
     ],
+    'assets': {
+        'web.assets_frontend': [
+            'tool_control/static/src/css/reset.css',
+        ],
+        'web.assets_backend': [
+            'tool_control/static/src/css/reset.css',
+        ],
+    },
     'application': True,
     'license': 'LGPL-3'
 }
