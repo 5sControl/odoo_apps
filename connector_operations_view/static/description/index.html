@@ -122,8 +122,45 @@
 </div>
 </section>
     </t>
-<section class="oe_container">
-    <div class="oe_slogan">
-        <a class="btn btn-primary btn-lg mt8" style="color: #FFFFFF !important;" href="https://docs.google.com/presentation/d/1DrQh9U0DVxDtP2s5zxZlwrAWk2a0EXBm6RsrauyrooE/edit?hl=ru#slide=id.g25074296374_0_60"><i class="fa fa-check-square"></i> Link to the Presentation </a>
+<!--<section class="oe_container">-->
+<!--    <div class="oe_slogan">-->
+<!--        <a class="btn btn-primary btn-lg mt8" style="color: #FFFFFF !important;" href="https://docs.google.com/presentation/d/1DrQh9U0DVxDtP2s5zxZlwrAWk2a0EXBm6RsrauyrooE/edit?hl=ru#slide=id.g25074296374_0_60"><i class="fa fa-check-square"></i> Link to the Presentation </a>-->
+<!--    </div>-->
+<!--</section>-->
+<style>
+  .oe_slogan {
+    width: 800px;
+    height: 600px;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    border: 15px solid orange; /* Add orange border here */
+    margin: auto;
+  }
+
+  .oe_slogan img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .oe_slogan h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000000;
+    font-size: 24px;
+  }
+</style>
+
+<h3 style="color:#000000; text-align: center;">Presentation</h3>
+<t t-call="website.layout">
+  <section class="oe_container">
+    <div class="oe_row oe_spaced">
+
+      <div class="oe_slogan">
+        <img src="banner.gif" alt="Image Description">
+      </div>
     </div>
-</section>
+  </section>
+</t>
