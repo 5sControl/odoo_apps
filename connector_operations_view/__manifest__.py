@@ -7,7 +7,7 @@
     """,
     "description": """    
     """,
-    "author": "5sControls",
+    'author': "5sControl",
     "website": "https://5controls.com/",
     "category": "Uncategorized",
     "version": "0.1",
