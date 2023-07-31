@@ -33,6 +33,7 @@
     #          'tool_control/static/src/css/reset.css',
     #      ],
     #  },
+    'images':['static/description/banner.gif'],
     'application': True,
     'license': 'LGPL-3'
 }
