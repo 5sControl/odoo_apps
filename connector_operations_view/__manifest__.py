@@ -15,8 +15,14 @@
         "base",
         "mrp",
     ],
-    'images':['static/description/banner.gif'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/views.xml',
+        'views/data.xml',
+    ],
+    'images': ['static/description/banner.gif'],
     "application": True,
+    'auto_install': False,
     "development_status": "Beta",
     "license": "LGPL-3",
 }

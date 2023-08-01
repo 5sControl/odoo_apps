@@ -23,7 +23,7 @@
         'views/templates.xml',
         'views/tools_control_menu.xml',
     ],
-    'images':['static/description/banner.png'],
+    'images': ['static/description/banner.png'],
     'application': True,
     'license': 'LGPL-3'
 }
