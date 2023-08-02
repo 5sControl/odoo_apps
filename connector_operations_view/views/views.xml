@@ -25,11 +25,11 @@
             <field name="link"/>
             <templates>
                 <t t-name="kanban-box">
-                    <div style="display: flex; align-items: center;">
-                        <img t-att-src="'/connector_operations_view/static/description/banner.gif'" style="max-height: 500px; max-width: 500px; margin-right: 5px;"/>
-                        <span style="color: black; font-size: 16px;">Congratulations, you have successfully installed our module, for more information follow the </span>
+                    <div style="display: flex; flex-direction: column; align-items: center; width: 1200px; height: 750px; padding: 10px; border: 1px solid #ccc;">
+                        <span style="color: black; font-size: 16px; text-align: center;">Congratulations, you have successfully installed our module, for more information follow the </span>
+                        <img t-att-src="'/connector_operations_view/static/description/images/img1.jpg'" style="max-height: 500px; max-width: 500px; margin-right: 5px;"/>
                             <a t-attf-href="https://5controls.com/" t-attf-target="'_blank'">
-                                <span>Link 5controlS</span>
+                                <span style="color: red; font-size: 25px; align-items: center;">Link 5controlS</span>
                             </a>
                     </div>
                 </t>
