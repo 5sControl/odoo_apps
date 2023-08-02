@@ -1,10 +1,8 @@
 <odoo>
     <data>
-        <!-- Create a record for the model 'connector_operations.title' -->
         <record model="connector_operations.title" id="connector_operations_title_initial_record">
             <field name="link">https://5controls.com/</field>
             <field name="description">Congratulations, you have successfully installed our module, for more information follow the link</field>
-            <field name="image" eval="&lt;base64-encoded-image-data&gt;"/>
         </record>
     </data>
 </odoo>
