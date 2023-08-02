@@ -26,9 +26,13 @@
             <templates>
                 <t t-name="kanban-box">
                     <div style="display: flex; flex-direction: column; align-items: center; width: 1200px; height: 750px; padding: 10px; border: 1px solid #ccc;">
-                        <span style="color: black; font-size: 16px; text-align: center;">Congratulations, you have successfully installed our module, for more information follow the </span>
+                        <span style="color: black; font-size: 16px; text-align: center;">To unlock the full potential of Operation View module, we recommend pairing it with our powerful 5S Control suite. This dynamic duo seamlessly integrates to process and visualize your data, ensuring the best possible experience. Rest assured, it's a trusted and essential component for maximizing your productivity.</span>
                         <img t-att-src="'/connector_operations_view/static/description/images/img1.jpg'" style="max-height: 500px; max-width: 500px; margin-right: 5px;"/>
-                            <a t-attf-href="https://5controls.com/" t-attf-target="'_blank'">
+                        <div class="oe_slogan">
+                            <a class="btn btn-primary btn-lg mt8" style="color: #FFFFFF !important;" href="mailto:info@5scontrol.com"><i class="fa fa-check-square"></i> Send to email </a>
+                            <a class="btn btn-primary btn-lg mt8" style="color: #FFFFFF !important;" href="https://5controls.com/"><i class="fa fa-check-square"></i> Link 5controlS </a>
+                        </div>
+                        <a t-attf-href="https://5controls.com/" t-attf-target="'_blank'">
                                 <span style="color: red; font-size: 25px; align-items: center;">Link 5controlS</span>
                             </a>
                     </div>
