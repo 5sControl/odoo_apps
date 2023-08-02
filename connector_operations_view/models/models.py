@@ -9,3 +9,5 @@ class TitlePost(models.Model):
 
     link = fields.Char(string='Link')
     description = fields.Char(string='Description')
+    image = fields.Binary(string='Image')
+

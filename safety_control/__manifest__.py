@@ -22,6 +22,7 @@ At the same time, Safety Control app takes a photo of the person who neglects sa
         'views/views.xml',
         'views/safety_control_menu.xml'
     ],
+    'images': ['static/description/images/image1.png'],
     'application': True,
     'license': 'LGPL-3'
 }

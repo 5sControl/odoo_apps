@@ -15,6 +15,7 @@
         </record>
 
         <!-- Kanban View -->
+<!-- Kanban View -->
 <record model="ir.ui.view" id="view_connector_operations_title_kanban">
     <field name="name">Connector Operations Control 5S</field>
     <field name="model">connector_operations.title</field>
@@ -23,13 +24,17 @@
             <field name="id"/>
             <field name="description"/>
             <field name="link"/>
+            <field name="image"/>
             <templates>
                 <t t-name="kanban-box">
                     <div style="display: flex; align-items: center;">
-                        <span style="color: black; font-size: 16px;">Congratulations, you have successfully installed our module, for more information follow the </span>
-                        <a t-attf-href="https://5controls.com/" t-attf-target="'_blank'">
-                            <span>Link 5controlS</span>
-                        </a>
+                        <img t-if="record.image" t-att-src="'data:image/png;base64,' + record.image" style="max-height: 100px; max-width: 100px; margin-right: 5px;"/>
+                        <div>
+                            <span style="color: black; font-size: 16px;">Congratulations, you have successfully installed our module, for more information follow the </span>
+                            <a t-attf-href="https://5controls.com/" t-attf-target="'_blank'">
+                                <span>Link 5controlS</span>
+                            </a>
+                        </div>
                     </div>
                 </t>
             </templates>
