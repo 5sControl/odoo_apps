@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "min_max_5s",
+    'name': "MinMax5s",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        The module allows you to connect to the 5S inventory control system""",
 
     'description': """
-        Long description of module's purpose
+        The module allows you to connect to the 5S inventory control system
     """,
 
     'author': "5sControl",
