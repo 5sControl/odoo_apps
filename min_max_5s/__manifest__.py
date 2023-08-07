@@ -31,7 +31,7 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'images': ['static/description/banner.gif'],
+    'images': ['static/description/images/img1.jpeg'],
     "application": True,
     'auto_install': False,
     "development_status": "Beta",
