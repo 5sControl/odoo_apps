@@ -1,28 +1,55 @@
 <odoo>
     <data>
-        <record id="view_iframe_action_form" model="ir.ui.view">
-            <field name="name">iframe.action.form</field>
-            <field name="model">iframe.action</field>
+        <!-- Представление в виде таблицы для min_max.connection -->
+        <record model="ir.ui.view" id="view_connection_tree">
+            <field name="name">min_max.connection.tree</field>
+            <field name="model">min_max.connection</field>
             <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                            <field name="iframe_url"/>
-                        </group>
-                    </sheet>
-                </form>
+                <tree>
+                    <field name="name"/>
+                    <field name="url"/>
+                    <field name="username"/>
+                    <field name="password"/>
+                </tree>
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="action_iframe_action">
-            <field name="name">IFrame Action</field>
-            <field name="res_model">iframe.action</field>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="view_iframe_action_form"/>
+        <!-- Действие для отображения min_max.connection в виде таблицы -->
+        <record model="ir.actions.act_window" id="action_connection">
+            <field name="name">Connections</field>
+            <field name="res_model">min_max.connection</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_connection_tree"/>
             <field name="target">current</field>
         </record>
 
-        <menuitem name="IFrame Action" id="menu_iframe_action" action="action_iframe_action"/>
+        <!-- Представление в виде таблицы для min_max.items -->
+        <record model="ir.ui.view" id="view_items_tree">
+            <field name="name">min_max.items.tree</field>
+            <field name="model">min_max.items</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="object_type"/>
+                    <field name="status"/>
+                    <field name="current_stock_level"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Действие для отображения min_max.items в виде таблицы -->
+        <record model="ir.actions.act_window" id="action_items">
+            <field name="name">Items</field>
+            <field name="res_model">min_max.items</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_items_tree"/>
+            <field name="target">current</field>
+        </record>
+
+        <!-- Добавление представлений в меню -->
+        <menuitem name="Min Max 5S" id="menu_min_max_5s" sequence="1"/>
+        <menuitem name="Connections" id="menu_connection" parent="menu_min_max_5s" action="action_connection"/>
+        <menuitem name="Items" id="menu_items" parent="menu_min_max_5s" action="action_items"/>
+
     </data>
 </odoo>

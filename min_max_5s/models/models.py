@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
+from odoo import models, fields
 
-# from odoo import models, fields, api
+
+class ExternalServiceConnection(models.Model):
+    _name = 'min_max.connection'
+    _description = 'Connection'
+
+    name = fields.Char(string='Name', required=True)
+    url = fields.Char(string='URL', required=True)
+    username = fields.Char(string='Username', required=True)
+    password = fields.Char(string='Password', required=True)
 
 
-# class min_max_5s(models.Model):
-#     _name = 'min_max_5s.min_max_5s'
-#     _description = 'min_max_5s.min_max_5s'
+class Items(models.Model):
+    _name = 'min_max.items'
+    _description = 'Items'
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    name = fields.Char(string='Name')
+    object_type = fields.Char(string='Object Type')
+    status = fields.Char(string='Status')
+    current_stock_level = fields.Integer(string='Current Stock Level')

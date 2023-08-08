@@ -1,21 +1,23 @@
-# -*- coding: utf-8 -*-
-# from odoo import http
+from odoo import http
+import json
 
 
-# class MinMax5s(http.Controller):
-#     @http.route('/min_max_5s/min_max_5s', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
+class ItemsController(http.Controller):
 
-#     @http.route('/min_max_5s/min_max_5s/objects', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('min_max_5s.listing', {
-#             'root': '/min_max_5s/min_max_5s',
-#             'objects': http.request.env['min_max_5s.min_max_5s'].search([]),
-#         })
+    @http.route('/get_items_data', type='json', auth='user')
+    def get_items_data(self):
+        # Здесь получите данные из внешнего сервиса (например, с помощью библиотеки requests)
+        external_data = [...]
 
-#     @http.route('/min_max_5s/min_max_5s/objects/<model("min_max_5s.min_max_5s"):obj>', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('min_max_5s.object', {
-#             'object': obj
-#         })
+        return {
+            'data': external_data,
+            'view_id': self.env.ref('your_module.view_items_tree').id,
+        }
+
+
+class ReportsController(http.Controller):
+
+    def get_reports_data(self):
+        # Ваш код для получения данных по внешнему запросу
+        data = [...]  # Полученные данные
+        return {'data': data}
