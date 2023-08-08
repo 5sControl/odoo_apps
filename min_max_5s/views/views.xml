@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="view_iframe_action_form" model="ir.ui.view">
+            <field name="name">iframe.action.form</field>
+            <field name="model">iframe.action</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="iframe_url"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_iframe_action">
+            <field name="name">IFrame Action</field>
+            <field name="res_model">iframe.action</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_iframe_action_form"/>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem name="IFrame Action" id="menu_iframe_action" action="action_iframe_action"/>
+    </data>
+</odoo>

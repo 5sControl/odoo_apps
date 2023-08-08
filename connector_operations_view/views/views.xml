@@ -14,30 +14,45 @@
             </field>
         </record>
 
-<!-- Kanban View -->
-<record model="ir.ui.view" id="view_connector_operations_title_kanban">
-    <field name="name">Connector Operations Control 5S</field>
-    <field name="model">connector_operations.title</field>
-    <field name="arch" type="xml">
-        <kanban class="oe_background_grey">
-            <field name="id"/>
-            <field name="description"/>
-            <field name="link"/>
-            <templates>
-                <t t-name="kanban-box">
-                    <div style="display: flex; flex-direction: column; align-items: center; width: 1200px; height: 750px; padding: 10px; border: 1px solid #ccc;">
-                        <span style="color: black; font-size: 16px; text-align: center;">Congratulations, you have successfully installed our module, for more information follow the </span>
-                        <img t-att-src="'/connector_operations_view/static/description/images/img1.jpg'" style="max-height: 500px; max-width: 500px; margin-right: 5px;"/>
-                            <a t-attf-href="https://5controls.com/" t-attf-target="'_blank'">
-                                <span style="color: red; font-size: 25px; align-items: center;">Link 5controlS</span>
-                            </a>
-                    </div>
-                </t>
-            </templates>
-        </kanban>
-    </field>
-</record>
-
+        <!-- Kanban View -->
+        <record model="ir.ui.view" id="view_connector_operations_title_kanban">
+            <field name="name">Connector Operations Control 5S</field>
+            <field name="model">connector_operations.title</field>
+            <field name="arch" type="xml">
+                <kanban class="oe_background_grey">
+                    <field name="id"/>
+                    <field name="description"/>
+                    <field name="link"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div style="display: flex; flex-direction: column; align-items: center; width: 1200px; height: 750px; padding: 10px; border: 1px solid #ccc;">
+                                <span style="color: black; font-size: 16px; text-align: center;">To unlock the full
+                                    potential of Operation View module, we recommend pairing it with our powerful
+                                    5ControlS suite. This dynamic duo seamlessly integrates to process and visualize your
+                                    data, ensuring the best possible experience. Rest assured, it's a trusted and
+                                    essential component for maximizing your productivity.
+                                </span>
+                                <img t-att-src="'/connector_operations_view/static/description/banner.gif'"
+                                     style="max-height: 500px; max-width: 500px; margin-right: 5px;"/>
+                                <div class="oe_slogan">
+                                    <a class="btn btn-primary btn-lg mt8"
+                                       style="color: #FFFFFF !important; margin-right: 30px;"
+                                       href="mailto:info@5scontrol.com">
+                                        <i class="fa fa-check-square"></i>
+                                        Send to email
+                                    </a>
+                                    <a class="btn btn-primary btn-lg mt8" style="color: #FFFFFF !important;"
+                                       href="https://5controls.com/" target="_blank">
+                                        <i class="fa fa-check-square"></i>
+                                        Link 5ControlS
+                                    </a>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
 
 
         <!-- Form View -->
@@ -69,7 +84,8 @@
         </record>
 
         <!-- Menu Item -->
-        <menuitem name="Connector Operations" id="menu_connector_operations_title" action="action_connector_operations_title"/>
+        <menuitem name="Connector Operations" id="menu_connector_operations_title"
+                  action="action_connector_operations_title"/>
 
     </data>
 </odoo>

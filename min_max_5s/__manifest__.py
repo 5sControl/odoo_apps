@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Idle Control",
+    'name': "MinMax5s",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        The module allows you to connect to the 5S inventory control system""",
 
     'description': """
-        Long description of module's purpose
+        The module allows you to connect to the 5S inventory control system
     """,
 
     'author': "5sControl",
-    'website': "https://eigsoft.com/5scontrol",
+    "website": "https://5controls.com/",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -24,13 +23,17 @@
 
     # always loaded
     'data': [
-        'security/security.xml',
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'views/idle_control_menu.xml',
     ],
-    'images': ['static/description/images/banner.png'],
-    'application': True,
-    'license': 'LGPL-3'
+    # only loaded in demonstration mode
+    'demo': [
+        'demo/demo.xml',
+    ],
+    'images': ['static/description/banner.gif'],
+    "application": True,
+    'auto_install': False,
+    "development_status": "Beta",
+    "license": "LGPL-3",
 }
