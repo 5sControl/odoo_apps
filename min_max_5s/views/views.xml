@@ -25,17 +25,20 @@
 
         <!-- Представление в виде таблицы для min_max.items -->
         <record model="ir.ui.view" id="view_items_tree">
-            <field name="name">min_max.items.tree</field>
-            <field name="model">min_max.items</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                    <field name="object_type"/>
-                    <field name="status"/>
-                    <field name="current_stock_level"/>
-                </tree>
-            </field>
-        </record>
+    <field name="name">min_max.items.form</field>
+    <field name="model">min_max.items</field>
+    <field name="arch" type="xml">
+        <form>
+            <group>
+                <field name="name"/>
+                <field name="object_type"/>
+                <field name="status"/>
+                <field name="current_stock_level"/>
+                <button name="update_items_from_api" string="Update Items from API" type="object" class="oe_highlight"/>
+            </group>
+        </form>
+    </field>
+</record>
 
         <!-- Действие для отображения min_max.items в виде таблицы -->
         <record model="ir.actions.act_window" id="action_items">
