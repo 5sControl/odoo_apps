@@ -1,44 +1,45 @@
 <odoo>
     <data>
         <!-- Представление в виде таблицы для min_max.connection -->
-        <record model="ir.ui.view" id="view_connection_tree">
-            <field name="name">min_max.connection.tree</field>
+        <record model="ir.ui.view" id="view_external_service_connection_form">
+            <field name="name">min_max.connection.form</field>
             <field name="model">min_max.connection</field>
             <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                    <field name="url"/>
-                    <field name="username"/>
-                    <field name="password"/>
-                </tree>
+                <form string="External Service Connection">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="url"/>
+                            <field name="username"/>
+                            <field name="password"/>
+                        </group>
+                    </sheet>
+                </form>
             </field>
         </record>
 
-        <!-- Действие для отображения min_max.connection в виде таблицы -->
+        <!-- Действие для отображения min_max.connection создать запись -->
         <record model="ir.actions.act_window" id="action_connection">
-            <field name="name">Connections</field>
+            <field name="name">Service Connection</field>
             <field name="res_model">min_max.connection</field>
-            <field name="view_mode">tree</field>
-            <field name="view_id" ref="view_connection_tree"/>
-            <field name="target">current</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_external_service_connection_form"/>
+            <field name="target">inline</field>
         </record>
 
         <!-- Представление в виде таблицы для min_max.items -->
         <record model="ir.ui.view" id="view_items_tree">
-    <field name="name">min_max.items.form</field>
-    <field name="model">min_max.items</field>
-    <field name="arch" type="xml">
-        <form>
-            <group>
-                <field name="name"/>
-                <field name="object_type"/>
-                <field name="status"/>
-                <field name="current_stock_level"/>
-                <button name="update_items_from_api" string="Update Items from API" type="object" class="oe_highlight"/>
-            </group>
-        </form>
-    </field>
-</record>
+            <field name="name">min_max.items.tree</field>
+            <field name="model">min_max.items</field>
+            <field name="arch" type="xml">
+                <tree string="Items">
+                    <field name="name"/>
+                    <field name="object_type"/>
+                    <field name="status"/>
+                    <field name="current_stock_level"/>
+                </tree>
+            </field>
+        </record>
 
         <!-- Действие для отображения min_max.items в виде таблицы -->
         <record model="ir.actions.act_window" id="action_items">
@@ -48,6 +49,7 @@
             <field name="view_id" ref="view_items_tree"/>
             <field name="target">current</field>
         </record>
+
 
         <!-- Добавление представлений в меню -->
         <menuitem name="Min Max 5S" id="menu_min_max_5s" sequence="1"/>
