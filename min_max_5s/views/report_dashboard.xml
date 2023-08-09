@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_reports_graph">
+            <field name="name">min_max.reports.graph</field>
+            <field name="model">min_max.reports</field>
+            <field name="arch" type="xml">
+                <graph string="Reports Graph" type="bar">
+                    <field name="count"/>
+                    <field name="date_created"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_reports_graph">
+            <field name="name">Reports Graph</field>
+            <field name="res_model">min_max.reports</field>
+            <field name="view_mode">graph</field>
+        </record>
+
+        <menuitem name="Reports" id="menu_reports" parent="menu_min_max_5s"
+                  action="action_reports_graph"/>
+    </data>
+</odoo>

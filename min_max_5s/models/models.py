@@ -76,3 +76,11 @@ class Items(models.Model):
         else:
             return super(Items, self).search(args, offset=offset, limit=limit, order=order, count=count)
 
+
+class Reports(models.Model):
+    _name = 'min_max.reports'
+    _description = 'Reports'
+
+    name = fields.Char(string='Name')
+    count = fields.Integer(string='Count items')
+    date_created = fields.Datetime(string='Date create')
