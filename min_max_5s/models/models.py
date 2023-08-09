@@ -33,10 +33,12 @@ class Items(models.Model):
     _name = 'min_max.items'
     _description = 'Items'
 
+    id = fields.Integer(string='Id item')
     name = fields.Char(string='Name')
     object_type = fields.Char(string='Object Type')
     status = fields.Char(string='Status')
     current_stock_level = fields.Integer(string='Current Stock Level')
+    date_updated = fields.Char(string='Date last updated')
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
@@ -50,10 +52,12 @@ class Items(models.Model):
             records = self.env['min_max.items']
             for item_data in data:
                 new_record = self.env['min_max.items'].create({
+                    'id': item_data.get('id'),
                     'name': item_data.get('name'),
                     'object_type': item_data.get('object_type'),
                     'status': item_data.get('status'),
-                    'current_stock_level': item_data.get('current_stock_level')
+                    'current_stock_level': item_data.get('current_stock_level'),
+                    'date_updated': str(item_data.get('date_updated'))
                 })
                 records += new_record
 

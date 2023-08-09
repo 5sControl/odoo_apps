@@ -73,10 +73,12 @@
             <field name="model">min_max.items</field>
             <field name="arch" type="xml">
                 <tree string="Items">
+                    <field name="id"/>
                     <field name="name"/>
                     <field name="object_type"/>
                     <field name="status"/>
                     <field name="current_stock_level"/>
+                    <field name="date_updated"/>
                 </tree>
             </field>
         </record>
