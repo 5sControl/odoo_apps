@@ -81,6 +81,33 @@ class Reports(models.Model):
     _name = 'min_max.reports'
     _description = 'Reports'
 
-    name = fields.Char(string='Name')
+    name = fields.Char(string='Name items')
     count = fields.Integer(string='Count items')
     date_created = fields.Datetime(string='Date create')
+
+    # @api.model
+    # def search(self, args, offset=0, limit=None, order=None, count=False):
+    #     connection_record = self.env['min_max.connection'].search([], limit=1)
+    #     if connection_record:
+    #         url = f'{connection_record.url}/api/inventory/history/2023-08-09/00:00:00/23:59:00/'
+    #
+    #         headers = {
+    #             'Authorization': f'Bearer {connection_record.access_token}'
+    #         }
+    #
+    #         response = requests.get(url, headers=headers)
+    #         data = response.json()
+    #         print(data)
+    #
+    #         records = self.env['min_max.reports']
+    #         for report_data in data:
+    #             new_record = self.env['min_max.reports'].create({
+    #                 'name': report_data.get('id'),
+    #                 'count': report_data.get('name'),
+    #                 'date_created': str(report_data.get('start_tracking'))
+    #             })
+    #             records += new_record
+    #
+    #         return records
+    #     else:
+    #         return super(Reports, self).search(args, offset=offset, limit=limit, order=order, count=count)

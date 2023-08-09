@@ -1,5 +1,6 @@
 <odoo>
     <data>
+        <!-- Представление в виде графика для min_max.reports -->
         <record model="ir.ui.view" id="view_reports_graph">
             <field name="name">min_max.reports.graph</field>
             <field name="model">min_max.reports</field>
@@ -11,13 +12,38 @@
             </field>
         </record>
 
+        <!-- Представление в виде таблицы для min_max.reports -->
+        <record model="ir.ui.view" id="view_reports_table">
+            <field name="name">min_max.reports.table</field>
+            <field name="model">min_max.reports</field>
+            <field name="arch" type="xml">
+                <tree string="Reports Table">
+                    <field name="count"/>
+                    <field name="date_created"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Действие для графического представления min_max.reports -->
         <record model="ir.actions.act_window" id="action_reports_graph">
             <field name="name">Reports Graph</field>
             <field name="res_model">min_max.reports</field>
             <field name="view_mode">graph</field>
         </record>
 
-        <menuitem name="Reports" id="menu_reports" parent="menu_min_max_5s"
+        <!-- Действие для представления в виде таблицы min_max.reports -->
+        <record model="ir.actions.act_window" id="action_reports_table">
+            <field name="name">Reports Table</field>
+            <field name="res_model">min_max.reports</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <!-- Меню для выбора графического или таблицы представления min_max.reports -->
+        <menuitem name="Reports" id="menu_reports" parent="menu_min_max_5s"/>
+        <menuitem name="Reports Graph" id="menu_reports_graph" parent="menu_reports"
                   action="action_reports_graph"/>
+        <menuitem name="Reports Table" id="menu_reports_table" parent="menu_reports"
+                  action="action_reports_table"/>
+
     </data>
 </odoo>
