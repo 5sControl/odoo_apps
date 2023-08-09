@@ -1,5 +1,7 @@
 import requests
 
+from odoo.exceptions import ValidationError
+
 from odoo import models, fields, api
 
 
@@ -11,6 +13,20 @@ class ExternalServiceConnection(models.Model):
     url = fields.Char(string='URL', required=True)
     username = fields.Char(string='Username', required=True)
     password = fields.Char(string='Password', required=True)
+    access_token = fields.Char(string='Access Token', readonly=True)
+
+    @api.model
+    def create(self, vals):
+        auth_data = {
+            "username": vals["username"],
+            "password": vals["password"]
+        }
+        response = requests.post(f"{vals['url']}/auth/jwt/create/", json=auth_data)
+        token_data = response.json()
+        connection = super(ExternalServiceConnection, self).create(vals)
+        connection.access_token = token_data.get("access")
+
+        return connection
 
 
 class Items(models.Model):
