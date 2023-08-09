@@ -1,5 +1,4 @@
 import requests
-import logging
 
 from odoo import models, fields, api
 
@@ -25,18 +24,24 @@ class Items(models.Model):
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
-        url = "https://40da-134-17-26-206.ngrok-free.app/api/inventory/items/"
-        response = requests.get(url)
-        data = response.json()
+        connection_record = self.env['min_max.connection'].search([], limit=1)
 
-        records = self.env['min_max.items']
-        for item_data in data:
-            new_record = self.env['min_max.items'].create({
-                'name': item_data.get('name'),
-                'object_type': item_data.get('object_type'),
-                'status': item_data.get('status'),
-                'current_stock_level': item_data.get('current_stock_level')
-            })
-            records += new_record
+        if connection_record:
+            url = f'{connection_record.url}/api/inventory/items/'
+            response = requests.get(url)
+            data = response.json()
 
-        return records
+            records = self.env['min_max.items']
+            for item_data in data:
+                new_record = self.env['min_max.items'].create({
+                    'name': item_data.get('name'),
+                    'object_type': item_data.get('object_type'),
+                    'status': item_data.get('status'),
+                    'current_stock_level': item_data.get('current_stock_level')
+                })
+                records += new_record
+
+            return records
+        else:
+            return super(Items, self).search(args, offset=offset, limit=limit, order=order, count=count)
+
