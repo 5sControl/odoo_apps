@@ -22,6 +22,10 @@ class ExternalServiceConnection(models.Model):
             "password": vals["password"]
         }
         response = requests.post(f"{vals['url']}/auth/jwt/create/", json=auth_data)
+
+        if response.status_code != 200:
+            raise ValidationError("Record not created, invalid data entered.")
+
         token_data = response.json()
         connection = super(ExternalServiceConnection, self).create(vals)
         connection.access_token = token_data.get("access")
