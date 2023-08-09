@@ -14,6 +14,12 @@ class ExternalServiceConnection(models.Model):
     username = fields.Char(string='Username', required=True)
     password = fields.Char(string='Password', required=True)
     access_token = fields.Char(string='Access Token', readonly=True)
+    is_connected = fields.Boolean(string='Is Connected', compute='_compute_is_connected', store=True)
+
+    @api.depends('access_token')
+    def _compute_is_connected(self):
+        for record in self:
+            record.is_connected = bool(record.access_token)
 
     @api.model
     def create(self, vals):
@@ -29,6 +35,7 @@ class ExternalServiceConnection(models.Model):
         token_data = response.json()
         connection = super(ExternalServiceConnection, self).create(vals)
         connection.access_token = token_data.get("access")
+        connection.is_connected = True
 
         return connection
 

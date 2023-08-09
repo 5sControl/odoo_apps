@@ -58,6 +58,7 @@
                     <field name="name"/>
                     <field name="url"/>
                     <field name="username"/>
+                    <field name="is_connected"/>
                 </tree>
             </field>
         </record>
