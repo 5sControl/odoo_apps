@@ -1,4 +1,5 @@
 import requests
+import logging
 
 from odoo import models, fields, api
 
@@ -22,18 +23,22 @@ class Items(models.Model):
     status = fields.Char(string='Status')
     current_stock_level = fields.Integer(string='Current Stock Level')
 
-    @api.model
-    def update_items_from_api(self):
+    def fetch_data_from_external_service(self):
         url = "https://40da-134-17-26-206.ngrok-free.app/api/inventory/items/"
         response = requests.get(url)
+        data = response.json()
+        print(data)
+        for item_data in data:
+            self.create({
+                'name': item_data.get('name'),
+                'object_type': item_data.get('object_type'),
+                'status': item_data.get('status'),
+                'current_stock_level': item_data.get('current_stock_level')
+            })
 
-        if response.status_code == 200:
-            items_data = response.json()
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        # Вызываем метод fetch_data_from_external_service перед чтением записей
+        self.fetch_data_from_external_service()
+        return super(Items, self).search(args, offset=offset, limit=limit, order=order, count=count)
 
-            for item_data in items_data:
-                self.create({
-                    'name': item_data.get('name'),
-                    'object_type': item_data.get('object_type'),
-                    'status': item_data.get('status'),
-                    'current_stock_level': item_data.get('current_stock_level')
-                })

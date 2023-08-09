@@ -31,6 +31,7 @@
                 </tree>
             </field>
         </record>
+
         <!-- Представление в виде таблицы для min_max.connection -->
         <record model="ir.ui.view" id="view_external_service_connection_form">
             <field name="name">min_max.connection.form</field>
