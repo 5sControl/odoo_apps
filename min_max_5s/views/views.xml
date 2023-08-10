@@ -1,5 +1,27 @@
 <odoo>
     <data>
+        <!-- Представление в виде графика для min_max.items -->
+        <record model="ir.ui.view" id="view_items_graph">
+            <field name="name">min_max.items.graph</field>
+            <field name="model">min_max.items</field>
+            <field name="arch" type="xml">
+                <graph string="Item Graph">
+                    <field name="date_updated"/>
+                    <field name="status"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Действие для открытия клиентского графика -->
+        <record model="ir.actions.act_window" id="action_item_graph">
+            <field name="name">Item Graph</field>
+            <field name="res_model">min_max.items</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_items_graph"/>
+            <field name="context">{'graph_data': graph_data}</field>
+        </record>
+
+
         <!-- Представление в виде формы для min_max.items -->
         <record model="ir.ui.view" id="view_items_form">
             <field name="name">min_max.items.form</field>
@@ -33,17 +55,6 @@
             </field>
         </record>
 
-        <!-- Представление в виде графика для min_max.items -->
-        <record model="ir.ui.view" id="view_items_graph">
-            <field name="name">min_max.items.graph</field>
-            <field name="model">min_max.items</field>
-            <field name="arch" type="xml">
-                <graph string="Item Graph">
-                    <field name="date_updated"/>
-                    <field name="status"/>
-                </graph>
-            </field>
-        </record>
 
         <!-- Представление в виде таблицы для min_max.connection -->
         <record model="ir.ui.view" id="view_external_service_connection_form">
@@ -88,14 +99,6 @@
             <field name="name">Items</field>
             <field name="res_model">min_max.items</field>
             <field name="view_mode">tree,form,graph</field>
-        </record>
-
-        <!-- Действие для отображения графика элемента -->
-        <record model="ir.actions.act_window" id="action_item_graph">
-            <field name="name">Item Graph</field>
-            <field name="res_model">min_max.items</field>
-            <field name="view_mode">graph</field>
-            <field name="view_id" ref="view_items_graph"/>
         </record>
 
         <!-- Меню Min Max 5S -->

@@ -46,6 +46,7 @@ class Items(models.Model):
 
     id = fields.Integer(string='Id item')
     name = fields.Char(string='Name')
+    number = fields.Integer(string='Number')
     object_type = fields.Char(string='Object Type')
     status = fields.Char(string='Status')
     current_stock_level = fields.Integer(string='Current Stock Level')
@@ -63,7 +64,7 @@ class Items(models.Model):
             records = self.env['min_max.items']
             for item_data in data:
                 new_record = self.env['min_max.items'].create({
-                    'id': item_data.get('id'),
+                    'number': item_data.get('id'),
                     'name': item_data.get('name'),
                     'object_type': item_data.get('object_type'),
                     'status': item_data.get('status'),
@@ -78,9 +79,19 @@ class Items(models.Model):
 
     @api.model
     def action_item_graph(self, args, offset=0, limit=None, order=None, count=False):
+        # return {
+        #     'type': 'ir.actions.act_window',
+        #     'res_model': 'min_max.items',
+        #     'view_mode': 'graph',
+        # }
         connection_record = self.env['min_max.connection'].search([], limit=1)
+
         if connection_record:
-            url = f'{connection_record.url}/api/inventory/history/2023-08-09/00:00:00/23:59:00/8/'
+            id = 0
+            item_record = self.env['min_max.items'].browse(args[0])
+            if item_record:
+                id += item_record.number
+            url = f'{connection_record.url}/api/inventory/history/2023-08-09/00:00:00/23:59:00/{id}/'
             headers = {
                 'Authorization': f'Bearer {connection_record.access_token}'
             }
@@ -96,9 +107,21 @@ class Items(models.Model):
                             status = extra_data.get('status')
                             graph_data.append({'date_updated': date_updated, 'status': status})
             print('graph data')
-            return graph_data
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'graph',
+                'context': {
+                    'graph_data': tuple(graph_data),
+                },
+            }
         else:
-            return []
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'graph',
+                'context': {
+                    'graph_data': (),
+                },
+            }
 
 
 class Reports(models.Model):
