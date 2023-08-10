@@ -30,6 +30,7 @@
         'views/templates.xml',
         'views/idle_control_menu.xml',
     ],
+    'images': ['static/description/images/banner.png'],
     'application': True,
     'license': 'LGPL-3'
 }

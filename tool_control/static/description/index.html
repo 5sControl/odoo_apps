@@ -6,304 +6,114 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!--    <link rel="stylesheet" href="../src/css/reset.css" media="screen" />-->
+    <!--    <link rel="stylesheet" href="reset.css" media="screen" />-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-<style>
-    .wrapper {
-        display: flex;
-        max-width: 900px;
-        width: 100%;
-        justify-content: space-around;
-        margin-top: 20px;
-        height: 100%;
-    }
 
-    .wrapper_column {
-        margin-top: 40px;
-        display: flex;
-        flex-direction: column;
-        max-height: 400px;
-        justify-content: center;
-        row-gap: 10px;
-        opacity: .5;
-    }
-
-    .column_img {
-        margin-top: 20px
-    }
-
-    .wrapper_header {
-        font-size: 20px;
-        text-align: center;
-        text-transform: uppercase;
-    }
-
-    .wrapper_footer {
-        font-size: 16px;
-        text-transform: uppercase;
-        text-align: right;
-    }
-</style>
-<body style="width: 100%">
-<section style="display: flex;
-    align-items: end;
-    justify-content: end;
-    flex-direction: column;">
-
-    <div class="wrapper">
-        <div class="wrapper_column">
-            <img class="column_img" src="./images/one.svg" alt="">
-            <div class="wrapper_header">test1</div>
-            <div class="wrapper_footer">test2</div>
-            <img class="column_img" src="./images/three.svg" alt="">
-            <div class="wrapper_header">test1</div>
-            <div class="wrapper_footer">test2</div>
-            <img class="column_img" src="./images/five.svg" alt="">
-            <div class="wrapper_header">test1</div>
-            <div class="wrapper_footer">test2</div>
-        </div>
-        <div class="wrapper_column">
-            <img class="column_img" src="./images/two.svg" alt="">
-            <div class="wrapper_header">test1</div>
-            <div class="wrapper_footer">test2</div>
-            <img class="column_img" src="./images/four.svg" alt="">
-            <div class="wrapper_header">test1</div>
-            <div class="wrapper_footer">test2</div>
-            <img class="column_img" src="./images/six.svg" alt="">
-            <div class="wrapper_header">test1</div>
-            <div class="wrapper_footer">test2</div>
-        </div>
+<body style="width: 100%; font-family: 'Inter'">
+<section class="d-flex flex-column justify-content-center" style="margin-top: 30px; margin-bottom: 40px">
+    <div class="flex">
+        <h2 class="text-center" style="font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 150%;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0F1D3E;">Tool Control</h2>
     </div>
-
-
-
-    <div style="margin-top: 5%;">
-        <h2 style="font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 28px;
-line-height: 150%;
-letter-spacing: 0.03em;
-text-transform: uppercase;
-color: #0F1D3E;">Tool Control</h2>
-    </div>
-    <div style="margin-top: 30px;
-    width: 90%;">
-        <p style="font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 150%;
-text-align: start ;
-color: #0F1D3E;
-    margin-top: 20px;">An employee used a tool but forgot to return or damaged it? No more lost inventory, no
-            more lost profits!
-        </p>
-        <p style="font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 150%;
-text-align: start ;
-color: #0F1D3E;
-    margin-top: 20px;">
-            Tool Control ERP is a convenient repository for reports created in ToolControl mobile application.
-        </p>
-        <p style="font-family: 'Inter';
+    <div>
+        <p style="
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 150%;
-    text-align: start ;
+    text-align: start;
+    color: #0F1D3E;
+    margin-top: 20px;">An employee used a tool but forgot to return or damaged it? No more lost inventory, no
+            more lost profits!
+        </p>
+        <p style="
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: start;
+    color: #0F1D3E;
+    margin-top: 20px;">
+            Tool Control ERP is a convenient repository for reports created in ToolControl mobile application.
+        </p>
+        <p style="
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: start;
     color: #0F1D3E;
     margin-top: 20px;">The ToolControl app takes a photo of a worker at the moment when she/he takes a tool.
             Images are sent to Tool Control ERP, where you can always check who took this or that tool last and
             contact that person directly.
         </p>
     </div>
-    <div>
-        <h2 style="font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 175%;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #0F1D3E;
-    margin-bottom: 50px;
-    margin-top: 50px;">Get free mobile app</h2>
+    <div style="margin-top: 30px; margin-bottom: 40px">
+        <h2 class="text-center">Get free mobile app</h2>
     </div>
-    <div style="display: flex;">
-        <div style="display: flex;
-    justify-content: start;
-    width: 696px;
-    height: 64px;
-    background: #FFFFFF;
-    border: 2px solid #0F1D3E;
-    border-radius: 40px;">
-            <div style="display: flex;
-    justify-content: space-between;
-    width: 150px;
-    background: #0F1D3E;
-    border-radius: 40px;
-    border-color: #0F1D3E;
-    z-index: 1;"><p style="font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 175%;
-    color: #FFFFFF;
-    margin-top: 15px;
-    margin-left: 15px;">Copy Link</p>
-                <img style="width: 25px;
-    margin-top: 18px;
-    margin-right: 10px;
-    height: 25px;" src="./images/arrow.svg" alt=""></div>
-            <a style="color: black;
-    text-decoration: none;
-    margin-top: 22px;
-    margin-left: 10px;" href="https://play.google.com/store/apps/details?id=com.FiveSControl.ToolControl">
-                https://play.google.com/store/apps/details?id=com.FiveSControl.ToolControl</a>
+    <div>
+        <div class="text-center d-flex justify-content-center">
+            <div class="border border-dark rounded-pill p-3">
+                https://play.google.com/store/apps/details?id=com.FiveSControl.ToolControl
+            </div>
         </div>
     </div>
-    <div>
-        <h2 style="font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 150%;
-    color: #858991;
-    margin-top: 20px;
-    margin-bottom: 20px;">OR</h2>
+    <div style="margin-top: 30px; margin-bottom: 40px">
+        <h2 class="text-center">OR</h2>
     </div>
-    <div style="display: flex; justify-content: center; align-items: center;">
-        <a style="text-decoration: none" href="mailto:info@5scontrol.com">
-            <div style="width: 166px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #FE6100;
-    border-radius: 40px;
-    border-color: #FE6100;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 175%;
-    color: #FFFFFF;">
-                <img style="margin-right: 10px;" src="./images/mail.svg" alt="">Email us
+    <div class="flex border border-warning rounded-pill bg-warning" style="margin: 0 auto; padding: 20px 40px;">
+        <a class="text-center" style="text-decoration: none" href="mailto:info@5scontrol.com">
+            <div style="color: white">
+                <img style="padding-right: 10px; " src="./images/mail.svg" alt="">Email us
             </div>
-        </a>
-        <a href="https://www.linkedin.com/in/alina-khursa/">
-            <button style="margin-left: 50px;
-    width: 166px;
-    height: 64px;
-    background: #FE6100;
-    border-radius: 40px;
-    border-color: #FE6100;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 175%;
-    color: #FFFFFF;">
-                <img style="margin-right: 10px;
-    margin-top: 7px;" src="./images/linked.svg" alt="">Linkedin
-            </button>
         </a>
     </div>
 </section>
 
-<section style="display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;">
-    <div style="margin-top: 5%;">
-        <h2 style="font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 28px;
-line-height: 150%;
-letter-spacing: 0.03em;
-text-transform: uppercase;
-color: #0F1D3E;">ALL IN ONE ERP</h2>
+<section>
+    <div style="margin-top: 30px; margin-bottom: 40px">
+        <h2 class="text-center">ALL IN ONE ERP</h2>
     </div>
-    <div style="margin-top: 30px;
-    width: 60%;">
-        <p style="font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 150%;
-text-align: center;
-color: #0F1D3E;">
+    <div >
+        <p style="
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: start;
+    color: #0F1D3E;
+    margin-top: 20px;">
             Tool Control Odoo is fully integrated with other Odoo modules and allows you to instantly make
             edits within interconnected blocks.
         </p>
     </div>
-    <div style="display: flex;
-    justify-content: space-around;
-    margin-top: 50px;
-    width: 80%;">
-        <div style="display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 600px;">
-            <div style="margin-left: 20px;
-    display: flex;
-    justify-content: start;
-    min-width: 400px;
-    width: auto;
-    height: 110px;
-    background: #FFFFFF;
-    box-shadow: 3px 5px 18px rgba(172, 177, 192, 0.25);
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;">
-                <img src="./images/one.svg" alt="">
-                <div style="display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 5px 10px 5px 15px;">
-                    <h5 style="font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 150%;
-color: #0F1D3E;
-">Staff</h5>
-                    <p style="font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 15px;
-line-height: 150%;
-color: #858991;
-">Identify workers responsible for equipment damage</p>
+    <div class="d-flex flex-column gap-3" style="margin-top: 40px; margin-bottom: 40px">
+        <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
+            <div style="max-width: 150px" class="d-flex flex-column gap-3 m-3">
+                <img style="width: 70px; height: 70px; margin: 0 auto;" src="./images/one.svg" alt="">
+                <div >
+                    <h5 class="text-center">Staff</h5>
+                    <p class="text-center" style="
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    color: #858991;">Identify workers responsible for equipment damage</p>
                 </div>
             </div>
-            <div style="margin-left: 20px;
-    display: flex;
-    justify-content: start;
-    min-width: 400px;
-    width: auto;
-    height: 110px;
-    background: #FFFFFF;
-    box-shadow: 3px 5px 18px rgba(172, 177, 192, 0.25);
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;">
-                <img src="./images/three.svg" alt="">
-                <div style="display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 5px 10px 5px 15px;">
-                    <h5 style="font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 150%;
-color: #0F1D3E;
-">Accounting</h5>
-                    <p style="font-family: 'Inter';
+            <div style="max-width: 150px" class="d-flex flex-column gap-3 m-3">
+                <img style="width: 70px; height: 70px; margin: 0 auto;" src="./images/three.svg" alt="">
+                <div >
+                    <h5 class="text-center">Accounting</h5>
+                    <p class="text-center" style="
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -311,28 +121,11 @@ color: #0F1D3E;
     color: #858991;">Update your asset disposal records</p>
                 </div>
             </div>
-            <div style="margin-left: 20px;
-    display: flex;
-    justify-content: start;
-    min-width: 400px;
-    width: auto;
-    height: 110px;
-    background: #FFFFFF;
-    box-shadow: 3px 5px 18px rgba(172, 177, 192, 0.25);
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;">
-                <img src="./images/five.svg" alt="">
-                <div style="display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 5px 10px 5px 15px;">
-                    <h5 style="font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 150%;
-color: #0F1D3E;">Planning</h5>
-                    <p style="font-family: 'Inter';
+            <div style="max-width: 150px" class="d-flex flex-column gap-3 m-3">
+                <img style="width: 70px; height: 70px; margin: 0 auto;" src="./images/five.svg" alt="">
+                <div >
+                    <h5 class="text-center">Planning</h5>
+                    <p class="text-center" style="
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -341,32 +134,12 @@ color: #0F1D3E;">Planning</h5>
                 </div>
             </div>
         </div>
-        <div style="display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 600px;">
-            <div style="margin-left: 20px;
-    display: flex;
-    justify-content: start;
-    min-width: 400px;
-    width: auto;
-    height: 110px;
-    background: #FFFFFF;
-    box-shadow: 3px 5px 18px rgba(172, 177, 192, 0.25);
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;">
-                <img src="./images/two.svg" alt="">
-                <div style="display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 5px 10px 5px 15px;">
-                    <h5 style="font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 150%;
-color: #0F1D3E;">Inventory</h5>
-                    <p style="font-family: 'Inter';
+        <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
+            <div style="max-width: 150px" class="d-flex flex-column gap-3 m-3">
+                <img style="width: 70px; height: 70px; margin: 0 auto;" src="./images/two.svg" alt="">
+                <div >
+                    <h5 class="text-center">Inventory</h5>
+                    <p class="text-center" style="
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -374,28 +147,11 @@ color: #0F1D3E;">Inventory</h5>
     color: #858991;">Make changes to the list of tools in case of damage or loss</p>
                 </div>
             </div>
-            <div style="margin-left: 20px;
-    display: flex;
-    justify-content: start;
-    min-width: 400px;
-    width: auto;
-    height: 110px;
-    background: #FFFFFF;
-    box-shadow: 3px 5px 18px rgba(172, 177, 192, 0.25);
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;">
-                <img src="./images/four.svg" alt="">
-                <div style="display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 5px 10px 5px 15px;">
-                    <h5 style="font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 150%;
-color: #0F1D3E;">Expenses</h5>
-                    <p style="font-family: 'Inter';
+            <div style="max-width: 150px" class="d-flex flex-column gap-3 m-3">
+                <img style="width: 70px; height: 70px; margin: 0 auto;" src="./images/four.svg" alt="">
+                <div >
+                    <h5 class="text-center">Expenses</h5>
+                    <p class="text-center" style="
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -403,28 +159,11 @@ color: #0F1D3E;">Expenses</h5>
     color: #858991;">Specify reasons for the losses incurred</p>
                 </div>
             </div>
-            <div style="margin-left: 20px;
-    display: flex;
-    justify-content: start;
-    min-width: 400px;
-    width: auto;
-    height: 110px;
-    background: #FFFFFF;
-    box-shadow: 3px 5px 18px rgba(172, 177, 192, 0.25);
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;">
-                <img src="./images/six.svg" alt="">
-                <div style="display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 5px 10px 5px 15px;">
-                    <h5 style="font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 150%;
-color: #0F1D3E;">Production</h5>
-                    <p style="font-family: 'Inter';
+            <div style="max-width: 150px" class="d-flex flex-column gap-3 m-3">
+                <img style="width: 70px; height: 70px; margin: 0 auto;" src="./images/six.svg" alt="">
+                <div >
+                    <h5 class="text-center">Production</h5>
+                    <p class="text-center" style="
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -436,93 +175,49 @@ color: #0F1D3E;">Production</h5>
     </div>
 </section>
 
-<section style="display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 50px;
-    margin-bottom: 20px;">
+<section>
     <div>
-        <h2 style="font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 28px;
-line-height: 150%;
-text-align: center;
-letter-spacing: 0.03em;
-text-transform: uppercase;
-color: #0F1D3E;">INTERACTION BETWEEN TOOL CONTROL APP AND ODOO MODULE</h2>
+        <h2 class="text-center">INTERACTION BETWEEN TOOL CONTROL APP AND ODOO MODULE</h2>
     </div>
-    <div style="display: flex;
-    width: 100%;
-    justify-content: center;"
-    >
-        <div style="width: 90%; display: flex; justify-content: space-between">
-            <div style="margin-top: 130px">
-                <img src="./images/Telefon.svg" alt="">
+    <div>
+        <div class="d-flex flex-row justify-content-center gap-3 flex-wrap"
+             style="margin-top: 50px; margin-bottom: 50px;">
+            <img style="margin: auto 0; width: 15%; height: auto;" src="./images/Telefon.svg" alt="">
+            <div class="d-flex" style="width: 10%; height: auto;">
+                <div class="d-flex flex-column" style="margin: auto 0;">
+                    <p>Photos of violators</p>
+                    <img style="width: 90%;" src="./images/strsr.svg" alt="">
+                </div>
             </div>
-            <div style="display: flex; flex-direction: column; justify-content: center; width: 100px;">
-                <p style="font-family: 'Inter';
-                          font-style: normal;
-                          font-weight: 500;
-                          font-size: 12px;
-                          line-height: 150%;
-                          text-align: center;
-                          color: #0F1D3E;
-                          margin-bottom: 15px;"
-                >Photos of violators</p>
-                <img src="./images/strsr.svg" alt="">
+            <img style="width: 40%; height: auto;" src="./images/iMac.svg" alt="">
+            <div class="d-flex" style="width: 10%; height: auto;">
+                <div class="d-flex flex-column" style="margin: auto 0;">
+                    <p>Data for resources management</p>
+                    <img style="width: 90%;" src="./images/strsr.svg" alt="">
+                </div>
             </div>
-            <div style="margin-top: 120px;">
-                <img src="./images/iMac.svg" alt="">
-            </div>
-            <div style="display: flex; flex-direction: column;justify-content: center; width: 120px">
-                <p style="font-family: 'Inter';
-                          font-style: normal;
-                          font-weight: 500;
-                          font-size: 12px;
-                          line-height: 150%;
-                          text-align: center;
-                          color: #0F1D3E;
-                          margin-bottom: 15px;"
-                >Data for resources management</p>
-                <img src="./images/strsr.svg" alt="">
-            </div>
-            <div style="margin-top: 60px; display: flex; flex-direction: column; justify-content: center; max-height: 400px;">
-                <img style="margin-top: 40px" src="./images/one.svg" alt="">
-                <img style="margin-top: 40px" src="./images/three.svg" alt="">
-                <img style="margin-top: 40px" src="./images/five.svg" alt="">
-            </div>
-            <div style="margin-top: 60px; display: flex; flex-direction: column;max-height: 400px; justify-content: center;">
-                <img style="margin-top: 40px" src="./images/two.svg" alt="">
-                <img style="margin-top: 40px" src="./images/four.svg" alt="">
-                <img style="margin-top: 40px" src="./images/six.svg" alt="">
+            <div class="d-flex gap-3" style="width: 15%; height: auto;">
+                <div class="d-flex flex-column justify-content-around gap-3">
+                    <img style="max-width: 70px; width: 100%; height: auto;" src="./images/one.svg" alt="">
+                    <img style="max-width: 70px; width: 100%; height: auto;" src="./images/three.svg" alt="">
+                    <img style="max-width: 70px; width: 100%; height: auto;" src="./images/five.svg" alt="">
+                </div>
+                <div class="d-flex flex-column justify-content-around gap-3">
+                    <img style="max-width: 70px; width: 100%; height: auto;" src="./images/two.svg" alt="">
+                    <img style="max-width: 70px; width: 100%; height: auto;" src="./images/four.svg" alt="">
+                    <img style="max-width: 70px; width: 100%; height: auto;" src="./images/six.svg" alt="">
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section style=" margin-top: 90px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 100px;">
+<section class="m-4">
     <div>
-        <h2 style="font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 28px;
-line-height: 150%;
-text-align: center;
-letter-spacing: 0.03em;
-text-transform: uppercase;
-color: #0F1D3E;">Get instant free mobile app</h2>
+        <h2 class="text-center">Get instant free mobile app</h2>
     </div>
-    <div style="margin-top: 50px;">
-        <a href=""><img src="./images/googleplay.svg" alt=""></a>
+    <div class="d-flex p-4">
+        <a style="margin: 0 auto;" href=""><img src="./images/googleplay.svg" alt=""></a>
     </div>
 </section>
 

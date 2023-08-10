@@ -87,7 +87,7 @@ pyrightconfig.json
 
 staff-control-django.code-workspace
 
-images/
+
 
 # env proj 
 database/dataset/encoding_*

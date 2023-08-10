@@ -5,20 +5,9 @@
     A tool to improve production efficiency in both qualitative and quantitative terms. Allows the enterprise manager to:
 
     """,
-    "description": """
-    It’s a tool to improve production efficiency both in qualitative and quantitative terms. It provides the enterprise manager with the ability to:
-    
-    - assess the workload of personnel and production capacities;
-    - record the personal responsibility of employees for the quality of operations performed; 
-    - evaluate the time of operations, identify operations in which the most time is spent on non-core tasks;
-    - identify bottlenecks in production that cause the most downtime;
-    - assess the status of any order, analyze the risks of missing the deadline;
-    - analyze the quality of individual operations using machine learning algorithms.
-    
-    **Presentation:**
-    https://docs.google.com/presentation/d/1DrQh9U0DVxDtP2s5zxZlwrAWk2a0EXBm6RsrauyrooE/edit?hl=ru#slide=id.g25074296374_0_60       
+    "description": """    
     """,
-    "author": "5sControls",
+    "author": "5sControl",
     "website": "https://5controls.com/",
     "category": "Uncategorized",
     "version": "0.1",
@@ -26,7 +15,14 @@
         "base",
         "mrp",
     ],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/views.xml",
+        "views/data.xml",
+    ],
+    "images": ["static/description/banner.gif"],
     "application": True,
+    "auto_install": False,
     "development_status": "Beta",
     "license": "LGPL-3",
 }

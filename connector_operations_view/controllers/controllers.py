@@ -13,11 +13,13 @@ class OperationViews(Controller):
     @route("/fives/operations")
     def get_operations(self, **kwargs) -> List[Dict[str, Any]]:
         params: Dict[str, str] = request.httprequest.args
-        
+
         from_time, to_time = get_dt_interval(dict(params))
 
         services: OperationViewService = OperationViewService()
-        result: List[Dict[str, Any]] = services.get_operation(from_time=from_time, to_time=to_time)
+        result: List[Dict[str, Any]] = services.get_operation(
+            from_time=from_time, to_time=to_time
+        )
 
         return send(result)
 
@@ -27,6 +29,8 @@ class OperationViews(Controller):
         from_time, to_time = get_dt_interval(dict(params))
 
         services: OperationViewService = OperationViewService()
-        result: List[Dict[str, Any]] = services.get_orders(from_time=from_time, to_time=to_time)
+        result: List[Dict[str, Any]] = services.get_orders(
+            from_time=from_time, to_time=to_time
+        )
 
         return send(result)

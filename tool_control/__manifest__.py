@@ -17,13 +17,13 @@
     'version': '0.1',
     'depends': ['base'],
     'data': [
-        'static/src/css/reset.css',
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
         'views/tools_control_menu.xml',
     ],
+    'images': ['static/description/banner.png'],
     'application': True,
     'license': 'LGPL-3'
 }

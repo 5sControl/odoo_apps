@@ -1,9 +1,9 @@
 from datetime import datetime
 from typing import Any, Dict, Iterable, List
 
-from odoo.http import request, Controller
+from odoo.http import request
 
-from ..utils.utils import get_dt_interval, convert_to_unix_timestamp, route, send
+from ..utils.utils import convert_to_unix_timestamp
 from ..utils.types import Production, Workorder
 
 
@@ -35,8 +35,8 @@ class OperationViewService:
 
                 if workplace_id not in operations_by_workplace:
                     operations_by_workplace[workplace_id] = {
-                        "oprtTypeID": workplace_id,
-                        "oprtName": workplace_name,
+                        "oprTypeID": workplace_id,
+                        "oprName": workplace_name,
                         "oprs": [operation_data],
                     }
                 else:
@@ -46,10 +46,16 @@ class OperationViewService:
 
     @staticmethod
     def get_orders(from_time: datetime, to_time: datetime):
-        orders_with_operations: Iterable[Production] = request.env["mrp.production"].sudo().search([
-            ("workorder_ids.date_planned_start", ">=", from_time),
-            ("workorder_ids.date_planned_finished", "<=", to_time)
-        ])
+        orders_with_operations: Iterable[Production] = (
+            request.env["mrp.production"]
+            .sudo()
+            .search(
+                [
+                    ("workorder_ids.date_planned_start", ">=", from_time),
+                    ("workorder_ids.date_planned_finished", "<=", to_time),
+                ]
+            )
+        )
 
         result: List[Dict[str, Any]] = []
         for order in orders_with_operations:
