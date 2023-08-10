@@ -76,6 +76,16 @@ class Items(models.Model):
         else:
             return super(Items, self).search(args, offset=offset, limit=limit, order=order, count=count)
 
+    def action_item_graph(self):
+        # Ваш код для открытия графического представления
+        # для выбранного элемента
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'min_max.items',
+            'view_mode': 'graph',
+            # Дополнительные параметры, если необходимо
+        }
+
 
 class Reports(models.Model):
     _name = 'min_max.reports'
