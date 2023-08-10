@@ -95,9 +95,8 @@ class Items(models.Model):
                         if extra_data.get('itemId') == 8:
                             status = extra_data.get('status')
                             graph_data.append({'date_updated': date_updated, 'status': status})
-            print(graph_data)
+            print('graph data')
             return graph_data
-
         else:
             return []
 

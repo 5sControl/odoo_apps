@@ -95,6 +95,7 @@
             <field name="name">Item Graph</field>
             <field name="res_model">min_max.items</field>
             <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_items_graph"/>
         </record>
 
         <!-- Меню Min Max 5S -->
