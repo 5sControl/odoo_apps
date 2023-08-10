@@ -7,7 +7,7 @@
     """,
     "description": """    
     """,
-    'author': "5sControl",
+    "author": "5sControl",
     "website": "https://5controls.com/",
     "category": "Uncategorized",
     "version": "0.1",
@@ -15,14 +15,14 @@
         "base",
         "mrp",
     ],
-    'data': [
-        'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/data.xml',
+    "data": [
+        "security/ir.model.access.csv",
+        "views/views.xml",
+        "views/data.xml",
     ],
-    'images': ['static/description/banner.gif'],
+    "images": ["static/description/banner.gif"],
     "application": True,
-    'auto_install': False,
+    "auto_install": False,
     "development_status": "Beta",
     "license": "LGPL-3",
 }
