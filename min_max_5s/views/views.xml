@@ -18,6 +18,19 @@
             </field>
         </record>
 
+<!-- Представление в виде графика для min_max.items -->
+        <record model="ir.ui.view" id="view_item_graph">
+            <field name="name">min_max.item.graph</field>
+            <field name="model">min_max.items</field>
+            <field name="arch" type="xml">
+                <graph string="Item Graph" type="bar">
+                    <field name="date_updated"/>
+                    <field name="status"/>
+
+                </graph>
+            </field>
+        </record>
+
         <!-- Представление в виде таблицы для min_max.items -->
         <record model="ir.ui.view" id="view_items_tree">
             <field name="name">min_max.items.tree</field>
@@ -87,7 +100,7 @@
         <record model="ir.actions.act_window" id="action_items">
             <field name="name">Items</field>
             <field name="res_model">min_max.items</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,graph</field>
         </record>
 
 
