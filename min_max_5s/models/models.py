@@ -76,15 +76,30 @@ class Items(models.Model):
         else:
             return super(Items, self).search(args, offset=offset, limit=limit, order=order, count=count)
 
-    def action_item_graph(self):
-        # Ваш код для открытия графического представления
-        # для выбранного элемента
-        return {
-            'type': 'ir.actions.act_window',
-            'res_model': 'min_max.items',
-            'view_mode': 'graph',
-            # Дополнительные параметры, если необходимо
-        }
+    @api.model
+    def action_item_graph(self, args, offset=0, limit=None, order=None, count=False):
+        connection_record = self.env['min_max.connection'].search([], limit=1)
+        if connection_record:
+            url = f'{connection_record.url}/api/inventory/history/2023-08-09/00:00:00/23:59:00/8/'
+            headers = {
+                'Authorization': f'Bearer {connection_record.access_token}'
+            }
+            response = requests.get(url, headers=headers)
+            data = response.json()
+            graph_data = []
+
+            for report_data in data:
+                date_updated = report_data.get('start_tracking')
+                if 'extra' in report_data:
+                    for extra_data in report_data['extra']:
+                        if extra_data.get('itemId') == 8:
+                            status = extra_data.get('status')
+                            graph_data.append({'date_updated': date_updated, 'status': status})
+            print(graph_data)
+            return graph_data
+
+        else:
+            return []
 
 
 class Reports(models.Model):
