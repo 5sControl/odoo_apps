@@ -108,15 +108,13 @@ class Items(models.Model):
                             graph_data.append({'date_updated': date_updated, 'status': status})
             print('graph data')
             return {
-                'type': 'ir.actions.client',
-                'tag': 'graph',
-                'context': {
-                    'graph_data': tuple(graph_data),
-                },
+                'type': 'ir.actions.act_window',
+                'res_model': 'min_max.items',
+                'view_mode': 'graph',
             }
         else:
             return {
-                'type': 'ir.actions.client',
+                'type': 'ir.actions.act_window',
                 'tag': 'graph',
                 'context': {
                     'graph_data': (),
