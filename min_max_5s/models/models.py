@@ -2,6 +2,8 @@ import requests
 
 from odoo.exceptions import ValidationError
 
+from datetime import datetime
+
 from odoo import models, fields, api
 
 
@@ -79,13 +81,8 @@ class Items(models.Model):
 
     @api.model
     def action_item_graph(self, args, offset=0, limit=None, order=None, count=False):
-        # return {
-        #     'type': 'ir.actions.act_window',
-        #     'res_model': 'min_max.items',
-        #     'view_mode': 'graph',
-        # }
         connection_record = self.env['min_max.connection'].search([], limit=1)
-
+        graph_data = []
         if connection_record:
             id = 0
             item_record = self.env['min_max.items'].browse(args[0])
@@ -97,29 +94,22 @@ class Items(models.Model):
             }
             response = requests.get(url, headers=headers)
             data = response.json()
-            graph_data = []
-
             for report_data in data:
-                date_updated = report_data.get('start_tracking')
+                date_updated = datetime.strptime(report_data.get('start_tracking'), '%Y-%m-%d %H:%M:%S.%f').isoformat()
                 if 'extra' in report_data:
                     for extra_data in report_data['extra']:
-                        if extra_data.get('itemId') == 8:
+                        if extra_data.get('itemId') == id:
                             status = extra_data.get('status')
                             graph_data.append({'date_updated': date_updated, 'status': status})
-            print('graph data')
-            return {
-                'type': 'ir.actions.act_window',
-                'res_model': 'min_max.items',
-                'view_mode': 'graph',
-            }
-        else:
-            return {
-                'type': 'ir.actions.act_window',
-                'tag': 'graph',
-                'context': {
-                    'graph_data': (),
-                },
-            }
+        view_id = self.env.ref('min_max_5s.view_items_graph').id
+        action = {
+            'name': 'Item Graph',
+            'type': 'ir.actions.act_window',
+            'view_mode': 'graph',
+            'view_id': view_id,
+            'context': {'graph_data': graph_data},
+        }
+        return action
 
 
 class Reports(models.Model):
