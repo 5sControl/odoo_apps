@@ -19,8 +19,7 @@
             <field name="res_model">min_max.items</field>
             <field name="view_mode">graph</field>
             <field name="view_id" ref="view_items_graph"/>
-            <field name="context">{'default_graph_data': graph_data}</field>
-
+            <field name="context">{'action_item_graph': graph_data}</field>
         </record>
 
 
