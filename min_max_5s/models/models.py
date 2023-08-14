@@ -55,10 +55,13 @@ class Items(models.Model):
     date_updated = fields.Char(string='Date last updated')
 
     @api.model
+    def delete_all_items(self):
+        self.env.cr.execute("DELETE FROM min_max_items")
+        print('Delete all items')
+
+    @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
-
-        self.unlink()
-
+        self.delete_all_items()
         connection_record = self.env['min_max.connection'].search([], limit=1)
 
         if connection_record:
