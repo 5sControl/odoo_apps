@@ -57,16 +57,19 @@ class Items(models.Model):
     @api.model
     def delete_all_items(self):
         self.env.cr.execute("DELETE FROM min_max_items")
-        print('Delete all items')
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
         self.delete_all_items()
         connection_record = self.env['min_max.connection'].search([], limit=1)
 
+        headers = {
+            'Authorization': f'JWT {connection_record.access_token}'
+        }
+
         if connection_record:
             url = f'{connection_record.url}/api/inventory/items/'
-            response = requests.get(url)
+            response = requests.get(url, headers=headers)
             data = response.json()
 
             records = self.env['min_max.items']
@@ -90,14 +93,16 @@ class Items(models.Model):
         reports_model = self.env['min_max.reports']
         reports_model.delete_all_reports()
         connection_record = self.env['min_max.connection'].search([], limit=1)
+        date_today = datetime.now().date()
+
         if connection_record:
             id = 0
             item_record = self.env['min_max.items'].browse(args[0])
             if item_record:
                 id += item_record.number
-            url = f'{connection_record.url}/api/inventory/history/2023-08-09/00:00:00/23:59:00/{id}/'
+            url = f'{connection_record.url}/api/inventory/history/{date_today}/00:00:00/23:59:00/{id}/'
             headers = {
-                'Authorization': f'Bearer {connection_record.access_token}'
+                'Authorization': f'JWT {connection_record.access_token}'
             }
             response = requests.get(url, headers=headers)
             data = response.json()
