@@ -1,5 +1,17 @@
 <odoo>
     <data>
+        <!-- Представление в виде графика для min_max.REPOTRS -->
+        <record model="ir.ui.view" id="view_reports_graph">
+            <field name="name">min_max.reports.graph</field>
+            <field name="model">min_max.reports</field>
+            <field name="arch" type="xml">
+                <graph string="Reports Graph">
+                    <field name="date_updated"/>
+                    <field name="count"/>
+                </graph>
+            </field>
+        </record>
+
         <!-- Представление в виде графика для min_max.items -->
         <record model="ir.ui.view" id="view_items_graph">
             <field name="name">min_max.items.graph</field>
@@ -8,7 +20,7 @@
                 <graph string="Item Graph">
                     <field name="status"/>
                     <field name="name"/>
-<!--                    <context>default_graph_data</context>-->
+                    <!--                    <context>default_graph_data</context>-->
                 </graph>
             </field>
         </record>
@@ -18,7 +30,7 @@
             <field name="name">Item Graph</field>
             <field name="res_model">min_max.items</field>
             <field name="view_mode">graph</field>
-            <field name="view_id" ref="view_items_graph"/>
+            <field name="view_id" ref="view_reports_graph"/>
             <field name="context">{'action_item_graph': graph_data}</field>
         </record>
 
