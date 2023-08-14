@@ -2,6 +2,8 @@ import requests
 
 from odoo.exceptions import ValidationError
 
+from datetime import datetime
+
 from odoo import models, fields, api
 
 
@@ -46,24 +48,34 @@ class Items(models.Model):
 
     id = fields.Integer(string='Id item')
     name = fields.Char(string='Name')
+    number = fields.Integer(string='Number')
     object_type = fields.Char(string='Object Type')
     status = fields.Char(string='Status')
     current_stock_level = fields.Integer(string='Current Stock Level')
     date_updated = fields.Char(string='Date last updated')
 
     @api.model
+    def delete_all_items(self):
+        self.env.cr.execute("DELETE FROM min_max_items")
+
+    @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
+        self.delete_all_items()
         connection_record = self.env['min_max.connection'].search([], limit=1)
+
+        headers = {
+            'Authorization': f'JWT {connection_record.access_token}'
+        }
 
         if connection_record:
             url = f'{connection_record.url}/api/inventory/items/'
-            response = requests.get(url)
+            response = requests.get(url, headers=headers)
             data = response.json()
 
             records = self.env['min_max.items']
             for item_data in data:
                 new_record = self.env['min_max.items'].create({
-                    'id': item_data.get('id'),
+                    'number': item_data.get('id'),
                     'name': item_data.get('name'),
                     'object_type': item_data.get('object_type'),
                     'status': item_data.get('status'),
@@ -76,38 +88,49 @@ class Items(models.Model):
         else:
             return super(Items, self).search(args, offset=offset, limit=limit, order=order, count=count)
 
+    @api.model
+    def action_item_graph(self, args, offset=0, limit=None, order=None, count=False):
+        reports_model = self.env['min_max.reports']
+        reports_model.delete_all_reports()
+        connection_record = self.env['min_max.connection'].search([], limit=1)
+        date_today = datetime.now().date()
+
+        if connection_record:
+            id = 0
+            item_record = self.env['min_max.items'].browse(args[0])
+            if item_record:
+                id += item_record.number
+            url = f'{connection_record.url}/api/inventory/history/{date_today}/00:00:00/23:59:00/{id}/'
+            headers = {
+                'Authorization': f'JWT {connection_record.access_token}'
+            }
+            response = requests.get(url, headers=headers)
+            data = response.json()
+            for report_data in data:
+                date_updated = datetime.strptime(report_data.get('start_tracking'), '%Y-%m-%d %H:%M:%S.%f').isoformat()
+                if 'extra' in report_data:
+                    for extra_data in report_data['extra']:
+                        if extra_data.get('itemId') == id:
+                            status = extra_data.get('status')
+                            count = extra_data.get('count')
+                            self.env['min_max.reports'].create({'date_updated': date_updated, 'status': status, 'count': count})
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'min_max.reports',
+            'view_mode': 'graph',
+        }
+
 
 class Reports(models.Model):
     _name = 'min_max.reports'
     _description = 'Reports'
 
-    name = fields.Char(string='Name items')
     count = fields.Integer(string='Count items')
-    date_created = fields.Datetime(string='Date create')
+    status = fields.Char(string='Status')
+    date_updated = fields.Char(string='Date last updated')
 
-    # @api.model
-    # def search(self, args, offset=0, limit=None, order=None, count=False):
-    #     connection_record = self.env['min_max.connection'].search([], limit=1)
-    #     if connection_record:
-    #         url = f'{connection_record.url}/api/inventory/history/2023-08-09/00:00:00/23:59:00/'
-    #
-    #         headers = {
-    #             'Authorization': f'Bearer {connection_record.access_token}'
-    #         }
-    #
-    #         response = requests.get(url, headers=headers)
-    #         data = response.json()
-    #         print(data)
-    #
-    #         records = self.env['min_max.reports']
-    #         for report_data in data:
-    #             new_record = self.env['min_max.reports'].create({
-    #                 'name': report_data.get('id'),
-    #                 'count': report_data.get('name'),
-    #                 'date_created': str(report_data.get('start_tracking'))
-    #             })
-    #             records += new_record
-    #
-    #         return records
-    #     else:
-    #         return super(Reports, self).search(args, offset=offset, limit=limit, order=order, count=count)
+    @api.model
+    def delete_all_reports(self):
+        all_reports = self.search([])
+        all_reports.unlink()
+
