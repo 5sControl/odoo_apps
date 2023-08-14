@@ -56,6 +56,9 @@ class Items(models.Model):
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
+
+        self.unlink()
+
         connection_record = self.env['min_max.connection'].search([], limit=1)
 
         if connection_record:
@@ -103,7 +106,6 @@ class Items(models.Model):
                             status = extra_data.get('status')
                             count = extra_data.get('count')
                             self.env['min_max.reports'].create({'date_updated': date_updated, 'status': status, 'count': count})
-                            print(date_updated, status, count)
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'min_max.reports',

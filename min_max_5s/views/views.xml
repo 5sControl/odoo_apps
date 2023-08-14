@@ -20,7 +20,7 @@
                 <graph string="Item Graph">
                     <field name="status"/>
                     <field name="name"/>
-                    <!--                    <context>default_graph_data</context>-->
+                    <field name="current_stock_level" type="measure"/>
                 </graph>
             </field>
         </record>
