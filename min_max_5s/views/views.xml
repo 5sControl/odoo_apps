@@ -6,9 +6,9 @@
             <field name="model">min_max.items</field>
             <field name="arch" type="xml">
                 <graph string="Item Graph">
-                    <field name="date_updated"/>
                     <field name="status"/>
-                    <context>default_graph_data</context>
+                    <field name="name"/>
+<!--                    <context>default_graph_data</context>-->
                 </graph>
             </field>
         </record>
@@ -52,6 +52,7 @@
                     <field name="object_type"/>
                     <field name="status"/>
                     <field name="current_stock_level"/>
+                    <field name="date_updated"/>
                     <button name="action_item_graph" string="Open Graph" type="object"/>
                 </tree>
             </field>
