@@ -107,7 +107,7 @@ class Items(models.Model):
             response = requests.get(url, headers=headers)
             data = response.json()
             for report_data in data:
-                date_updated = datetime.strptime(report_data.get('start_tracking'), '%Y-%m-%d %H:%M:%S.%f').isoformat()
+                date_updated = f"{report_data.get('start_tracking')}".split(' ')[1].split('.')[0]
                 if 'extra' in report_data:
                     for extra_data in report_data['extra']:
                         if extra_data.get('itemId') == id:
