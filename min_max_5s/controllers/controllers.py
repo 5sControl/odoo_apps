@@ -1,23 +1,23 @@
 from odoo import http
+
 import json
 
-
-class ItemsController(http.Controller):
-
-    @http.route('/get_items_data', type='json', auth='user')
-    def get_items_data(self):
-        # Здесь получите данные из внешнего сервиса (например, с помощью библиотеки requests)
-        external_data = [...]
-
-        return {
-            'data': external_data,
-            'view_id': self.env.ref('your_module.view_items_tree').id,
-        }
+from odoo.http import request, Controller
 
 
-class ReportsController(http.Controller):
+class MinMaxController(http.Controller):
 
-    def get_reports_data(self):
-        # Ваш код для получения данных по внешнему запросу
-        data = [...]  # Полученные данные
-        return {'data': data}
+    @http.route('/min_max/all_items', type='http', auth='public', methods=['GET'])
+    def get_products(self, **kwargs):
+        products = request.env['product.product'].sudo().search([])
+        product_data = []
+        for product in products:
+            product_data.append({
+                'id': product.id,
+                'name': product.name,
+            })
+        return json.dumps(product_data)
+
+    @http.route('/min_max/ping', type='http', auth='public')
+    def ping(self):
+        return json.dumps({'success': True})
