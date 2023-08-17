@@ -1,23 +1,51 @@
 from odoo import http
+
 import json
 
-
-class ItemsController(http.Controller):
-
-    @http.route('/get_items_data', type='json', auth='user')
-    def get_items_data(self):
-        # Здесь получите данные из внешнего сервиса (например, с помощью библиотеки requests)
-        external_data = [...]
-
-        return {
-            'data': external_data,
-            'view_id': self.env.ref('your_module.view_items_tree').id,
-        }
+from odoo.http import request, Controller
 
 
-class ReportsController(http.Controller):
+class MinMaxController(http.Controller):
 
-    def get_reports_data(self):
-        # Ваш код для получения данных по внешнему запросу
-        data = [...]  # Полученные данные
-        return {'data': data}
+    @http.route('/min_max/all_items', type='http', auth='public', methods=['GET'])
+    def get_products(self, **kwargs):
+        products = request.env['product.product'].sudo().search([])
+        product_data = []
+        for product in products:
+            product_data.append({
+                'id': product.id,
+                'name': product.name,
+            })
+        return json.dumps(product_data)
+
+    @http.route('/min_max/ping', type='http', auth='public')
+    def ping(self):
+        return json.dumps({'success': True})
+
+    @http.route('/min_max/send_message', type='http', auth='public', methods=['POST'], csrf=False)
+    def send_message(self):
+        body = request.httprequest.data
+        data = json.loads(body)
+        message = data.get('message', '')
+
+        user_5controlS = request.env['res.users'].sudo().search([('login', '=', '5controlS')], limit=1)
+        admin_user = request.env['res.users'].sudo().search([('login', '=', 'admin')], limit=1)
+
+        if user_5controlS and admin_user:
+            channel = request.env['mail.channel'].sudo().search([
+                ('channel_partner_ids', 'in', [user_5controlS.partner_id.id, admin_user.partner_id.id]),
+                ('channel_type', '=', 'chat')
+            ], limit=1)
+            if not channel:
+                channel = request.env['mail.channel'].sudo().create({
+                    'channel_partner_ids': [(6, 0, [user_5controlS.partner_id.id, admin_user.partner_id.id])],
+                    'public': 'private',
+                    'channel_type': 'chat',
+                })
+            channel.sudo().message_post(body=message, author_id=user_5controlS.partner_id.id, message_type="comment")
+            return json.dumps({'success': True})
+        return json.dumps({'success': False})
+
+
+
+
