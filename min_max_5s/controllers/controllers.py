@@ -16,11 +16,11 @@ class MinMaxController(http.Controller):
                 'id': product.id,
                 'name': product.name,
             })
-        return json.dumps(product_data, content_type="application/json")
+        return json.dumps(product_data)
 
-    @http.route('/min_max/ping', type='http', auth='public', csrf=False)
+    @http.route('/min_max/ping', type='json', auth='public', csrf=False)
     def ping(self):
-        return json.dumps({'success': True}, content_type="application/json")
+        return json.dumps({'success': True})
 
     @http.route('/min_max/send_message', type='http', auth='public', methods=['POST'], csrf=False)
     def send_message(self):
@@ -43,8 +43,8 @@ class MinMaxController(http.Controller):
                     'channel_type': 'chat',
                 })
             channel.sudo().message_post(body=message, author_id=user_5controlS.partner_id.id, message_type="comment")
-            return json.dumps({'success': True}, content_type="application/json")
-        return json.dumps({'success': False}, content_type="application/json")
+            return json.dumps({'success': True})
+        return json.dumps({'success': False})
 
 
 
