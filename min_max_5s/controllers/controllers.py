@@ -2,7 +2,7 @@ from odoo import http
 
 import json
 
-from odoo.http import request, Controller
+from odoo.http import request
 
 
 class MinMaxController(http.Controller):
@@ -16,7 +16,7 @@ class MinMaxController(http.Controller):
                 'id': product.id,
                 'name': product.name,
             })
-        return json.dumps(product_data)
+        return json.dumps(product_data, content_type="application/json")
 
     @http.route('/min_max/ping', type='http', auth='public', csrf=False)
     def ping(self):
@@ -43,8 +43,8 @@ class MinMaxController(http.Controller):
                     'channel_type': 'chat',
                 })
             channel.sudo().message_post(body=message, author_id=user_5controlS.partner_id.id, message_type="comment")
-            return json.dumps({'success': True})
-        return json.dumps({'success': False})
+            return json.dumps({'success': True}, content_type="application/json")
+        return json.dumps({'success': False}, content_type="application/json")
 
 
 
