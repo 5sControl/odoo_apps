@@ -7,7 +7,7 @@ from odoo.http import request
 
 class MinMaxController(http.Controller):
 
-    @http.route('/min_max/all_items', type='http', auth='public', methods=['GET'])
+    @http.route('/min_max/all_items', type='json', auth='public', methods=['GET'])
     def get_products(self, **kwargs):
         products = request.env['product.product'].sudo().search([])
         product_data = []
@@ -22,7 +22,7 @@ class MinMaxController(http.Controller):
     def ping(self):
         return json.dumps({'success': True})
 
-    @http.route('/min_max/send_message', type='http', auth='public', methods=['POST'], csrf=False)
+    @http.route('/min_max/send_message', type='json', auth='public', methods=['POST'], csrf=False)
     def send_message(self):
         body = request.httprequest.data
         data = json.loads(body)
