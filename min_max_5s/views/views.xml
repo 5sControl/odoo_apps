@@ -1,5 +1,22 @@
 <odoo>
     <data>
+        <!-- Форма по добавлению юзеров для нотификации -->
+        <record model="ir.ui.view" id="view_add_notification_users_form">
+            <field name="name">min_max.connection.add.notification.users.form</field>
+            <field name="model">min_max.connection</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="notification_users" widget="many2many_tags"/>
+                    </group>
+                    <footer>
+                        <button string="Add" type="object" class="btn-primary" name="action_add_notification_users"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
         <!-- Представление в виде графика для min_max.REPOTRS -->
         <record model="ir.ui.view" id="view_reports_graph">
             <field name="name">min_max.reports.graph</field>
@@ -97,7 +114,11 @@
                     <field name="url"/>
                     <field name="username"/>
                     <field name="is_connected"/>
+                    <field name="notification_users_names"/>
                 </tree>
+                <footer>
+                    <button string="Add Notification Users" type="object" name="action_add_notification_users"/>
+                </footer>
             </field>
         </record>
 

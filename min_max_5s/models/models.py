@@ -17,6 +17,25 @@ class ExternalServiceConnection(models.Model):
     password = fields.Char(string='Password', required=True)
     access_token = fields.Char(string='Access Token', readonly=True)
     is_connected = fields.Boolean(string='Is Connected', compute='_compute_is_connected', store=True)
+    notification_users = fields.Many2many('res.users', string='Notification Users')
+    notification_users_names = fields.Char(string='Notification Users Names',
+                                           compute='_compute_notification_users_names')
+
+    def action_add_notification_users(self):
+        return {
+            'name': "Add Notification Users",
+            'view_mode': 'form',
+            'view_id': self.env.ref('min_max_5s.view_add_notification_users_form').id,
+            'res_model': 'min_max.connection',
+            'res_id': self.id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+        }
+
+    @api.depends('notification_users')
+    def _compute_notification_users_names(self):
+        for record in self:
+            record.notification_users_names = ', '.join(record.notification_users.mapped('name'))
 
     @api.depends('access_token')
     def _compute_is_connected(self):
@@ -113,7 +132,8 @@ class Items(models.Model):
                         if extra_data.get('itemId') == id:
                             status = extra_data.get('status')
                             count = extra_data.get('count')
-                            self.env['min_max.reports'].create({'date_updated': date_updated, 'status': status, 'count': count})
+                            self.env['min_max.reports'].create(
+                                {'date_updated': date_updated, 'status': status, 'count': count})
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'min_max.reports',
@@ -133,4 +153,3 @@ class Reports(models.Model):
     def delete_all_reports(self):
         all_reports = self.search([])
         all_reports.unlink()
-
