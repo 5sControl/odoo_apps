@@ -18,16 +18,16 @@ class MinMaxController(http.Controller):
             })
         return json.dumps(product_data)
 
-    @http.route('/min_max/ping', type='http', auth='public')
+    @http.route('/min_max/ping', type='http', auth='public', csrf=False)
     def ping(self):
-        return json.dumps({'success': True})
+        return json.dumps({'success': True}, content_type="application/json")
 
     @http.route('/min_max/send_message', type='http', auth='public', methods=['POST'], csrf=False)
     def send_message(self):
         body = request.httprequest.data
         data = json.loads(body)
         message = data.get('message', '')
-
+        print(message)
         user_5controlS = request.env['res.users'].sudo().search([('login', '=', '5controlS')], limit=1)
         admin_user = request.env['res.users'].sudo().search([('login', '=', 'admin')], limit=1)
 
