@@ -28,24 +28,21 @@ class MinMaxController(http.Controller):
         data = json.loads(body)
         message = data.get('message', '')
         print(message)
-        user_5controlS = request.env['res.users'].sudo().search([('login', '=', '5controlS')], limit=1)
-        admin_user = request.env['res.users'].sudo().search([('login', '=', 'admin')], limit=1)
 
-        if user_5controlS and admin_user:
+        user_5controlS = request.env['res.users'].sudo().search([('login', '=', '5controlS')], limit=1)
+        bot_user = request.env.ref('base.user_root')
+        channel_name = f"OdooBot, {user_5controlS.login}"
+
+        if user_5controlS and bot_user:
             channel = request.env['mail.channel'].sudo().search([
-                ('channel_partner_ids', 'in', [user_5controlS.partner_id.id, admin_user.partner_id.id]),
+                ('name', '=', channel_name),
                 ('channel_type', '=', 'chat')
             ], limit=1)
-            if not channel:
-                channel = request.env['mail.channel'].sudo().create({
-                    'channel_partner_ids': [(6, 0, [user_5controlS.partner_id.id, admin_user.partner_id.id])],
-                    'public': 'private',
-                    'channel_type': 'chat',
-                })
-            channel.sudo().message_post(body=message, author_id=user_5controlS.partner_id.id, message_type="comment")
-            return json.dumps({'success': True})
-        return json.dumps({'success': False})
 
+            channel.sudo().message_post(body=message, author_id=bot_user.partner_id.id, message_type="comment")
+            return json.dumps({'success': True})
+
+        return json.dumps({'success': False})
 
 
 
