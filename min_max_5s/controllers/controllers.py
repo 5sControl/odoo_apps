@@ -27,22 +27,19 @@ class MinMaxController(http.Controller):
         body = request.httprequest.data
         data = json.loads(body)
         message = data.get('message', '')
-        print(message)
+        last_connection = request.env['min_max.connection'].sudo().search([], order='id desc', limit=1)
 
-        user_5controlS = request.env['res.users'].sudo().search([('login', '=', '5controlS')], limit=1)
-        bot_user = request.env.ref('base.user_root')
-        channel_name = f"OdooBot, {user_5controlS.login}"
+        for user in last_connection.notification_users:
+            if user.partner_id:
+                bot_user = request.env.ref('base.user_root')
+                channel_name = f"OdooBot, {user.name}"
 
-        if user_5controlS and bot_user:
-            channel = request.env['mail.channel'].sudo().search([
-                ('name', '=', channel_name),
-                ('channel_type', '=', 'chat')
-            ], limit=1)
+                if user and bot_user:
+                    channel = request.env['mail.channel'].sudo().search([
+                        ('name', '=', channel_name),
+                        ('channel_type', '=', 'chat')
+                    ], limit=1)
 
-            channel.sudo().message_post(body=message, author_id=bot_user.partner_id.id, message_type="comment")
-            return json.dumps({'success': True})
+                    channel.sudo().message_post(body=message, author_id=bot_user.partner_id.id, message_type="comment")
 
-        return json.dumps({'success': False})
-
-
-
+        return json.dumps({'success': True})
