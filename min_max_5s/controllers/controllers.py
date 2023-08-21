@@ -29,7 +29,7 @@ class MinMaxController(http.Controller):
         # body = request.httprequest.data
         # print("data", request.data)
         # data = json.loads(body)
-        message = request.json.get('message', '')
+        message = request.jsonrequest.get('message', '')
         last_connection = request.env['min_max.connection'].sudo().search([], order='id desc', limit=1)
 
         for user in last_connection.notification_users:
