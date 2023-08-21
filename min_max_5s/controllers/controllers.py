@@ -24,7 +24,7 @@ class MinMaxController(http.Controller):
     def ping(self):
         return send({'success': True})
 
-    @http.route('/min_max/send_message', type='json', auth='public', methods=['POST'], csrf=False)
+    @http.route('/min_max/send_message', methods=['POST'])
     def send_message(self):
         body = request.httprequest.data
         data = json.loads(body)
@@ -44,4 +44,4 @@ class MinMaxController(http.Controller):
 
                     channel.sudo().message_post(body=message, author_id=bot_user.partner_id.id, message_type="comment")
 
-        return json.dumps({'success': True})
+        return send({'success': True})
