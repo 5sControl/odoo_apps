@@ -18,9 +18,9 @@ class MinMaxController(http.Controller):
             })
         return json.dumps(product_data)
 
-    @http.route('/min_max/ping', type='json', auth='public', csrf=False)
+    @http.route('/min_max/ping', type='http', auth='public', csrf=False)
     def ping(self):
-        return json.dumps({'success': True})
+        return json.dumps({'success': True}, content_type="application/json")
 
     @http.route('/min_max/send_message', type='json', auth='public', methods=['POST'], csrf=False)
     def send_message(self):
