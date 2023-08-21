@@ -24,7 +24,7 @@ class MinMaxController(http.Controller):
     def ping(self):
         return send({'success': True})
 
-    @http.route('/min_max/send_message', methods=['POST'])
+    @route('/min_max/send_message', methods=['POST'])
     def send_message(self):
         body = request.httprequest.data
         data = json.loads(body)
