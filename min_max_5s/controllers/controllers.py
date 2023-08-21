@@ -26,11 +26,12 @@ class MinMaxController(http.Controller):
 
     @route('/min_max/send_message', methods=['POST'])
     def send_message(self, **kwargs):
+        data = json.loads(request.httprequest.data)
         # body = request.httprequest.data
         # print("data", request.data)
         # data = json.loads(body)
         if kwargs.get('message'):
-            message = kwargs.get('message')
+            message = data.get('message', '')
         else:
             message = "kwargs.get('message')"
         last_connection = request.env['min_max.connection'].sudo().search([], order='id desc', limit=1)
