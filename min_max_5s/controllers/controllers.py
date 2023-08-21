@@ -4,6 +4,8 @@ import json
 
 from odoo.http import request
 
+from .utils.utils import route, send
+
 
 class MinMaxController(http.Controller):
 
@@ -18,9 +20,9 @@ class MinMaxController(http.Controller):
             })
         return json.dumps(product_data)
 
-    @http.route('/min_max/ping', type='http', auth='public', csrf=False)
+    @route('/min_max/ping')
     def ping(self):
-        return json.dumps({'success': True}, content_type="application/json")
+        return send({'success': True})
 
     @http.route('/min_max/send_message', type='json', auth='public', methods=['POST'], csrf=False)
     def send_message(self):
