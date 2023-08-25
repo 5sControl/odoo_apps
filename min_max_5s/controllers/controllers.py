@@ -9,7 +9,7 @@ from .utils.utils import route, send
 
 class MinMaxController(http.Controller):
 
-    @http.route('/min_max/all_items', type='json', auth='public', methods=['GET'])
+    @route('/min_max/all_items')
     def get_products(self, **kwargs):
         products = request.env['product.product'].sudo().search([])
         product_data = []
@@ -18,7 +18,8 @@ class MinMaxController(http.Controller):
                 'id': product.id,
                 'name': product.name,
             })
-        return json.dumps(product_data)
+
+        return json.dumps(product_data).encode('utf-8').decode('unicode-escape')
 
     @route('/min_max/ping')
     def ping(self):
