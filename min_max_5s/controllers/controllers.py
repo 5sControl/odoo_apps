@@ -19,7 +19,7 @@ class MinMaxController(http.Controller):
                 'name': product.name,
             })
 
-        return json.dumps(product_data).encode('utf-8').decode('unicode-escape')
+        return send({'data': product_data})
 
     @route('/min_max/ping')
     def ping(self):
