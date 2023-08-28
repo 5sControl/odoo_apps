@@ -11,6 +11,7 @@ class MinMaxController(http.Controller):
 
     @route('/min_max/all_items')
     def get_products(self, **kwargs):
+        """Sends a list of all products"""
         products = request.env['product.product'].sudo().search([])
         product_data = []
         for product in products:
