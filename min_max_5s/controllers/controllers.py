@@ -28,6 +28,7 @@ class MinMaxController(http.Controller):
 
     @route('/min_max/send_message', methods=['POST'])
     def send_message(self, **kwargs):
+        """Sends a message to selected minmax users"""
 
         data = json.loads(request.httprequest.data.decode('utf-8'))
         message = data.get('message', '')
