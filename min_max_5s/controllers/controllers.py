@@ -46,5 +46,4 @@ class MinMaxController(http.Controller):
                     ], limit=1)
 
                     channel.sudo().message_post(body=message, author_id=bot_user.partner_id.id, message_type="comment")
-        print(message)
         return send({'success': True})
