@@ -21,17 +21,6 @@ class ExternalServiceConnection(models.Model):
     notification_users_names = fields.Char(string='Notification Users Names',
                                            compute='_compute_notification_users_names')
 
-    def action_add_notification_users(self):
-        return {
-            'name': "Add Notification Users",
-            'view_mode': 'form',
-            'view_id': self.env.ref('min_max_5s.view_add_notification_users_form').id,
-            'res_model': 'min_max.connection',
-            'res_id': self.id,
-            'type': 'ir.actions.act_window',
-            'target': 'new',
-        }
-
     @api.depends('notification_users')
     def _compute_notification_users_names(self):
         for record in self:

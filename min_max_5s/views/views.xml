@@ -83,7 +83,7 @@
                             <field name="url"/>
                             <field name="username"/>
                             <field name="password"/>
-                            <field name="notification_users"/>
+                            <field name="notification_users" widget="many2many_tags"/>
                         </group>
                     </sheet>
                 </form>
@@ -101,9 +101,6 @@
                     <field name="is_connected"/>
                     <field name="notification_users_names"/>
                 </tree>
-                <footer>
-                    <button string="Add Notification Users" type="object" name="action_add_notification_users"/>
-                </footer>
             </field>
         </record>
 
